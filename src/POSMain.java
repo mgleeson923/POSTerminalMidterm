@@ -8,5 +8,7 @@ public class POSMain {
         System.out.println("Hello World");
 
         System.out.println("Hola, como esta");
+
+        System.out.println("Salut. Je suis bien. Et toi?");
     }
 }
