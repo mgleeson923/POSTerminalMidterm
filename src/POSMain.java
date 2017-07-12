@@ -10,5 +10,7 @@ public class POSMain {
         System.out.println("Hola, como esta");
 
         System.out.println("Salut. Je suis bien. Et toi?");
+
+        System.out.println("Just adding my two cents");
     }
 }
