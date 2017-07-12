@@ -12,5 +12,7 @@ public class POSMain {
         System.out.println("Salut. Je suis bien. Et toi?");
 
         System.out.println("Just adding my two cents");
+
+        System.out.println("One lst time");
     }
 }
