@@ -6,11 +6,12 @@ import java.util.ArrayList;
  */
 public class Product {
 
-    private String[] name;
-    private String[] category;
-    private String[] description;
-    private String[] price;
-    private String[] menuLine;
+    private String name[] = new String[12];
+    private String tempName;
+    private String category[] = new String[12];
+    private String description[] = new String[12];
+    private String price[] = new String[12];
+    private String menuLine[] = new String[12];
     public ArrayList<String> products = new ArrayList<>();
 
     public Product() {
@@ -29,9 +30,9 @@ public class Product {
             while ((line = buff.readLine()) != null) {
                 menuLine = line.split(",");
 
-                for (int i = 0; i < line.length(); i++) {
+                for (int i = 0; i < menuLine.length; i++) {
                     if (i == 0) {
-                        name[j] = menuLine[i];
+                         name[j] = menuLine[i];
                     } else if (i == 1) {
                         category[j] = menuLine[i];
                     }else if (i == 2) {
@@ -40,11 +41,17 @@ public class Product {
                         price[j] = menuLine[i];
                     }
                 }j++;
-               products.add(line);
+
             }
             buff.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        for (int i = 0; i <name.length ; i++) {
+            System.out.println(name[i]);
+            System.out.println(category[i]);
+            System.out.println(description[i]);
+            System.out.println(price[i]);
         }
         return products;
     }
@@ -91,9 +98,15 @@ public class Product {
     }
 
     @Override
-    public String toString() {
-        return products.toString();
-    }
+  public String toString() {
+        for (int i = 0; i <name.length ; i++) {
+            System.out.println(name[i]);
+            System.out.println(category[i]);
+            System.out.println(description[i]);
+            System.out.println(price[i]);
+        }
+       return products.toString();
+   }
 
 
 //    private static void ReadFromFile() {
