@@ -7,8 +7,17 @@ import java.util.Scanner;
 public abstract class Payment {
     Scanner scan= new Scanner(System.in);
 
-    Cash cash1 = new Cash();
-    CreditCard creditCard1 = new CreditCard();
-    Check check1 = new Check();
+    public double generatePayment (double i){
+        return 0;
+    }
 
+    public String generatePayment (String creditNum, String cVV, String expDate){
+        return null;
+    }
+
+    public String generatePayment (String d){
+
+        return null;
+    }
+    
 }
