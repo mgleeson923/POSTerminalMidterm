@@ -34,12 +34,12 @@ public class POSMain {
                     System.out.println(menu.createMenu(0));
                     break;
                 case 2:
-                    menu.getItem(validator.getIntWithinRange("What item would you like to add to menu? Please refer to line number.", 1, 4));
+                    menu.getItem();
                     System.out.println("New Cart is \n" + menu.toString());
                     break;
                 case 3:
-                    cart.getItem(validator.getIntWithinRange("What item would you like to add to cart? Please refer to line number.", 1, 4));
-                    System.out.println("New Cart is \n" + cart.getCart());
+                    cart.getItem();
+                    System.out.println("New Cart is \n" + cart.getItem());
                     break;
                 case 4:
                     break;

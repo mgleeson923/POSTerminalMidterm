@@ -1,29 +1,48 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Midterm Project Grand Circus
- *
+ * <p>
  * Java June 2017
- *
+ * <p>
  * (Alphabetical Order)
  * Michael Gleeson
  * Matthew Menna
  * Mark Ritter
  * Vernon Scott
- *
  */
 
 public class Product {
 // declare variables
 
     private String name[] = new String[12];
-    private String tempName;
     private String category[] = new String[12];
     private String description[] = new String[12];
     private String price[] = new String[12];
     private String menuLine[] = new String[12];
+    private int quantity;
+    private int productID;
     public ArrayList<String> products = new ArrayList<>();
+    ArrayList<Product> shoppingCart = new ArrayList<>();
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
 
     // default constructor
     public Product() {
@@ -48,23 +67,24 @@ public class Product {
 
                 for (int i = 0; i < 4; i++) {
                     if (i == 0) {
-                         name[j] = menuLine[i];
+                        name[j] = menuLine[i];
                     } else if (i == 1) {
                         category[j] = menuLine[i];
-                    }else if (i == 2) {
+                    } else if (i == 2) {
                         description[j] = menuLine[i];
-                    }else if (i == 3) {
+                    } else if (i == 3) {
                         price[j] = menuLine[i];
                     }
-                }j++;
+                }
+                j++;
 
             }
             buff.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i <name.length ; i++) {
-            System.out.println(name[i] + " " + price[i]);
+        for (int i = 0; i < name.length; i++) {
+            System.out.println((i + 1) + " " + name[i] + " " + price[i]);
             System.out.println(category[i] + " " + description[i]);
             System.out.println();
 //            System.out.println(description[i]);
@@ -74,25 +94,27 @@ public class Product {
     } // end method
 
 
-    public ArrayList<String> getItem(int lineNumber) {
-        String line;
+    public ArrayList<Product> getItem() {
+        Scanner scnr = new Scanner(System.in);
+        String repeat;
+        do {
+            System.out.print("Please enter the item you would like to add to your order: ");
+            int userItem = scnr.nextInt();
 
-        try {
-            File myFile = new File("menu.txt");
-            FileReader reader = new FileReader(myFile);
-            BufferedReader buff = new BufferedReader(reader);
+            System.out.println("How many would you like?");
+            int itemQuantity = scnr.nextInt();
 
-            for (int i = 0; i <= products.size(); i++) {
-                line = buff.readLine();
-                if (i == (lineNumber - 1)) {
-                    products.add(line);
-                }
-            }
-            buff.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return products;
+            Product prod = new Product();
+            prod.setQuantity(itemQuantity);
+            prod.setProductID(userItem);
+            shoppingCart.add(prod);
+
+            System.out.println("Would you like to add another item? Y/N: ");
+            scnr.nextLine();
+            repeat = scnr.nextLine();
+        }while (repeat.equalsIgnoreCase("y"));
+
+        return shoppingCart;
     } // end method
 
     public ArrayList<String> getCart() {
@@ -115,14 +137,14 @@ public class Product {
     }// end method
 
     @Override
-  public String toString() {
-        for (int i = 0; i <name.length ; i++) {
+    public String toString() {
+        for (int i = 0; i < name.length; i++) {
             System.out.println(name[i]);
             System.out.println(category[i]);
             System.out.println(description[i]);
             System.out.println(price[i]);
         }
-       return products.toString();
+        return products.toString();
     }// end method
 
 

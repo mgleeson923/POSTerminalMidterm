@@ -1,8 +1,8 @@
 Cheeseburger,Meal,Simple Burger,$3.79
-Chicken Sandwich,Meal,Plain chicken sandwich,$2.67
-Turkey Sub,meal,6 inch Turkey Sub,$4.56
+Chicken Sandwich,Meal,Plain Chicken Sandwich,$2.67
+Turkey Sub,Meal,6 Inch Turkey Sub,$4.56
 Mystery Meat Grinder,Meal,Wouldn't you like to know,$0.99
-French fries,Side,Salted French Fries,$0.99
+French Fries,Side,Salted French Fries,$0.99
 Onion Rings,Side,Plain Onion Rings,$0.99
 Tater Tots,Side,Plain Tater Tots,$0.99
 Chili Fries,Side,French Fries with spicy chili,$1.99

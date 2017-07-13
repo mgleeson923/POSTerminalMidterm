@@ -11,9 +11,4 @@ public abstract class Payment {
     CreditCard creditCard1 = new CreditCard();
     Check check1 = new Check();
 
-
-
-
-
-
 }
