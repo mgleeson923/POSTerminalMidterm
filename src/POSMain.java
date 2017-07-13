@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class POSMain {
     public static void main(String[] args) {
+        System.out.println("Welcome to M3V! My Name is Jarvis, How can I serve you? ");
 
         boolean cont = true;
         int caseNumber;
