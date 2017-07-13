@@ -41,6 +41,7 @@ public class POSMain {
                     System.out.println("New Cart is \n" + cart.getCart());
                     break;
                 case 4:
+                    break;
                 default:
                     break;
             }
