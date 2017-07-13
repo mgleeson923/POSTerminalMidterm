@@ -46,7 +46,7 @@ public class Product {
             while ((line = buff.readLine()) != null) {
                 menuLine = line.split(",");
 
-                for (int i = 0; i < menuLine.length; i++) {
+                for (int i = 0; i < 4; i++) {
                     if (i == 0) {
                          name[j] = menuLine[i];
                     } else if (i == 1) {
@@ -64,10 +64,11 @@ public class Product {
             e.printStackTrace();
         }
         for (int i = 0; i <name.length ; i++) {
-            System.out.println(name[i]);
-            System.out.println(category[i]);
-            System.out.println(description[i]);
-            System.out.println(price[i]);
+            System.out.println(name[i] + " " + price[i]);
+            System.out.println(category[i] + " " + description[i]);
+            System.out.println();
+//            System.out.println(description[i]);
+//            System.out.println(price[i]);
         }
         return products;
     } // end method
