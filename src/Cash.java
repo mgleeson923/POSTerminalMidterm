@@ -1,34 +1,36 @@
-import java.util.Scanner;
-
 /**
  * Created by vernonscott on 7/13/17.
  */
 public class Cash extends Payment {
-    Scanner scan= new Scanner(System.in);
+    private double cashReceived;
+    public double changeGiven;
 
-    private double cashTaken;
+    @Override
+     public double generatePayment(double i){
 
-
-    public double getCashTaken() {
-        return cashTaken;
-    }
-
-    public void setCashTaken(double cashTaken) {
-        this.cashTaken = cashTaken;
-    }
-
-    public double getChangeGiven() {
         return changeGiven;
+    }
+
+    public double takePayment() {
+
+        return changeGiven;
+    }
+
+    public double getCashReceived() {
+        return getCashReceived();
+    }
+
+    public void setCashRecieved(double cashReceived) {
+        this.cashReceived = cashReceived;
+    }
+
+    public double getChangeGiven(double totalPayment,double grandTotal) {
+        return changeGiven;// totalPayment-grandTotal
     }
 
     public void setChangeGiven(double changeGiven) {
         this.changeGiven = changeGiven;
     }
-
-    private double changeGiven;
-
-
-
 
 
 

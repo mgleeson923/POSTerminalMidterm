@@ -3,13 +3,20 @@ import java.util.Scanner;
 /**
  * Created by vernonscott on 7/13/17.
  */
-public class CreditCard extends Payment {
-    Scanner scan= new Scanner(System.in);
+public abstract class CreditCard extends Payment {
 
 
-    private String creditCardNum;
-    private String cVV;
-    private String expDate;
+
+    public String creditCardNum;
+    public String cVV;
+    public String expDate;
+    public String paymentComplete;
+
+    @Override
+    public String generatePayment(String a, String b, String c){
+
+        return paymentComplete;
+    }
 
     public String getCreditCardNum() {
         return creditCardNum;
@@ -33,5 +40,13 @@ public class CreditCard extends Payment {
 
     public void setExpDate(String expDate) {
         this.expDate = expDate;
+    }
+
+    public String getPaymentComplete() {
+        return paymentComplete;
+    }
+
+    public void setPaymentComplete(String paymentComplete) {
+        this.paymentComplete = paymentComplete;
     }
 }
