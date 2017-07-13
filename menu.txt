@@ -1,12 +1,12 @@
-Cheeseburger meal simple burger $3.79 
-Chicken Sandwich meal Plain chicken sandwich $2.67
-Turkey Sub meal 6 inch turkey sub $4.56
-Mystery Meat Grinder meal Wouldn't you like to know $0.99
-French fries Side salted french fries $0.99 
-Onion Rings Side plain onion rings $0.99 
-Tater Tots Side Plain Tater Tots $0.99 
-Chili Fries Side French Fries with spicy chili $1.99 
-Soft Drink Drink Coke Products $1.00 
-Chocolate Shake Drink Large Chocolate Shake $1.59 
-Lemonade Drink Lemonade $0.99 
-Iced Tea Drink Sweetened Tea $0.99 
+Cheeseburger,meal,simple burger,$3.79
+Chicken Sandwich,meal,Plain chicken sandwich,$2.67
+Turkey Sub,meal,6 inch turkey sub,$4.56
+Mystery Meat Grinder,meal,Wouldn't you like to know,$0.99
+French fries,Side,Salted French Fries,$0.99
+Onion Rings,Side,Plain Onion Rings,$0.99
+Tater Tots,Side,Plain Tater Tots,$0.99
+Chili Fries,Side,French Fries with spicy chili,$1.99
+Soft Drink,Drink,Coke Products,$1.00
+Chocolate Shake,Drink,Large Chocolate Shake,$1.59
+Lemonade,Drink,Lemonade,$0.99
+Iced Tea,Drink,Sweetened Tea,$0.99
