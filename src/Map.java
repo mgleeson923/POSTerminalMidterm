@@ -21,8 +21,8 @@ import java.util.HashMap;
 public class Map {
 
     public static void main(String[] args) throws IOException {
-        HashMap<Integer, String> m1 = new HashMap<Integer, String>();
 
+         HashMap<Integer, String> m1 = new HashMap<Integer, String>();
         BufferedReader br = new BufferedReader(new FileReader("menu.txt"));
         String line = "";
         int i = 0;
