@@ -2,9 +2,20 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by michaelgleeson on 7/12/17.
+ * Midterm Project Grand Circus
+ *
+ * Java June 2017
+ *
+ * (Alphabetical Order)
+ * Michael Gleeson
+ * Matthew Menna
+ * Mark Ritter
+ * Vernon Scott
+ *
  */
+
 public class Product {
+// declare variables
 
     private String name[] = new String[12];
     private String tempName;
@@ -14,11 +25,16 @@ public class Product {
     private String menuLine[] = new String[12];
     public ArrayList<String> products = new ArrayList<>();
 
+    // default constructor
     public Product() {
 
     }
 
     public ArrayList<String> createMenu(int showOutput) {
+        /*
+        Creates menu of items from a text file called menu.txt.
+        Returns an ArrayList of Strings called name, category, description, price
+         */
         String line;
         int j = 0;
 
@@ -54,7 +70,7 @@ public class Product {
             System.out.println(price[i]);
         }
         return products;
-    }
+    } // end method
 
 
     public ArrayList<String> getItem(int lineNumber) {
@@ -76,7 +92,7 @@ public class Product {
             e.printStackTrace();
         }
         return products;
-    }
+    } // end method
 
     public ArrayList<String> getCart() {
         String line;
@@ -95,7 +111,7 @@ public class Product {
             e.printStackTrace();
         }
         return products;
-    }
+    }// end method
 
     @Override
   public String toString() {
@@ -106,7 +122,7 @@ public class Product {
             System.out.println(price[i]);
         }
        return products.toString();
-   }
+    }// end method
 
 
 //    private static void ReadFromFile() {
