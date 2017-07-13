@@ -37,6 +37,7 @@ public class Product {
         Creates menu of items from a text file called menu.txt.
         Returns an ArrayList of Strings called name, category, description, price
          */
+<<<<<<< HEAD
             String line;
             int j = 0;
 
@@ -60,6 +61,28 @@ public class Product {
                         } else if (i == 3) {
                             price[j] = menuLine[i];
                         }
+=======
+        String line;
+        int j = 0;
+
+        try {
+            File myFile = new File("menu.txt");
+            FileReader reader = new FileReader(myFile);
+            BufferedReader buff = new BufferedReader(reader);
+
+            while ((line = buff.readLine()) != null) {
+                menuLine = line.split(",");
+
+                for (int i = 0; i < 4; i++) {
+                    if (i == 0) {
+                         name[j] = menuLine[i];
+                    } else if (i == 1) {
+                        category[j] = menuLine[i];
+                    }else if (i == 2) {
+                        description[j] = menuLine[i];
+                    }else if (i == 3) {
+                        price[j] = menuLine[i];
+>>>>>>> b685f7da35f3ba4510753a39d2ae31b65357c225
                     }
                     j++;
 
@@ -68,6 +91,7 @@ public class Product {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+<<<<<<< HEAD
             for (int i = 0; i < name.length; i++) {
                 System.out.println(name[i]);
                 System.out.println(category[i]);
@@ -76,6 +100,21 @@ public class Product {
             }
             return products;
         } // end method
+=======
+            buff.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i <name.length ; i++) {
+            System.out.println(name[i] + " " + price[i]);
+            System.out.println(category[i] + " " + description[i]);
+            System.out.println();
+//            System.out.println(description[i]);
+//            System.out.println(price[i]);
+        }
+        return products;
+    } // end method
+>>>>>>> b685f7da35f3ba4510753a39d2ae31b65357c225
 
 
         public ArrayList<String> getItem ( int lineNumber){
