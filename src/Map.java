@@ -21,8 +21,8 @@ import java.util.HashMap;
 public class Map {
 
     public static void main(String[] args) throws IOException {
-        HashMap<Integer, String> m1 = new HashMap<Integer, String>();
 
+         HashMap<Integer, String> m1 = new HashMap<Integer, String>();
         BufferedReader br = new BufferedReader(new FileReader("menu.txt"));
         String line = "";
         int i = 0;
@@ -32,9 +32,11 @@ public class Map {
             m1.put(i, line);
             i++;
         }
-        for (int j = 0; j < m1.size(); j++) {
-            System.out.println(m1.get(j));
+        for (int j = 0; j < m1.size() - 1; j++) {
+
+            System.out.println((j + 1) + ". " + m1.get(j));
         }
+        System.out.println();
 //        m1.put(1, "Cheeseburger,meal,simple burger,$3.79");
 //        m1.put(2, THESE NEED TO BE OBJECTS );
 //        m1.put(3, );
