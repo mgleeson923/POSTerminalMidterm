@@ -3,6 +3,7 @@ import java.util.Scanner;
 /**
  * Created by michaelgleeson on 7/12/17.
  */
+
 public abstract class Payment {
     Scanner scan= new Scanner(System.in);
 
