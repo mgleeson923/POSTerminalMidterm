@@ -6,8 +6,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Mark on 7/13/2017.
+ * Midterm Project Grand Circus
+ *
+ * Java June 2017
+ *
+ * (Alphabetical Order)
+ * Michael Gleeson
+ * Matthew Menna
+ * Mark Ritter
+ * Vernon Scott
+ *
  */
+
 public class Map {
 
     public static void main(String[] args) throws IOException {

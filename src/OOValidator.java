@@ -1,8 +1,18 @@
 import java.util.Scanner;
 
 /**
- * Created by michaelgleeson on 7/13/17.
+ * Midterm Project Grand Circus
+ *
+ * Java June 2017
+ *
+ * (Alphabetical Order)
+ * Michael Gleeson
+ * Matthew Menna
+ * Mark Ritter
+ * Vernon Scott
+ *
  */
+
 public class OOValidator {
     static Scanner sc = new Scanner(System.in);
     private static boolean validEntry = false;
