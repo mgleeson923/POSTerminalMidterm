@@ -1,4 +1,4 @@
-Cheeseburger,meal,simple burger,$3.79
+Cheeseburger,Meal,Simple Burger,$3.79
 Chicken Sandwich,meal,Plain chicken sandwich,$2.67
 Turkey Sub,meal,6 inch turkey sub,$4.56
 Mystery Meat Grinder,meal,Wouldn't you like to know,$0.99

@@ -6,10 +6,11 @@ import java.util.ArrayList;
  */
 public class Product {
 
-    private String name;
-    private String category;
-    private String description;
-    private double price;
+    private String[] name;
+    private String[] category;
+    private String[] description;
+    private String[] price;
+    private String[] menuLine;
     public ArrayList<String> products = new ArrayList<>();
 
     public Product() {
@@ -18,6 +19,7 @@ public class Product {
 
     public ArrayList<String> createMenu(int showOutput) {
         String line;
+        int j = 0;
 
         try {
             File myFile = new File("menu.txt");
@@ -25,10 +27,20 @@ public class Product {
             BufferedReader buff = new BufferedReader(reader);
 
             while ((line = buff.readLine()) != null) {
-                if (showOutput == 1) {
-                    System.out.println(line);
-                }
-                products.add(line);
+                menuLine = line.split(",");
+
+                for (int i = 0; i < line.length(); i++) {
+                    if (i == 0) {
+                        name[j] = menuLine[i];
+                    } else if (i == 1) {
+                        category[j] = menuLine[i];
+                    }else if (i == 2) {
+                        description[j] = menuLine[i];
+                    }else if (i == 3) {
+                        price[j] = menuLine[i];
+                    }
+                }j++;
+               products.add(line);
             }
             buff.close();
         } catch (Exception e) {
@@ -37,37 +49,6 @@ public class Product {
         return products;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public ArrayList<String> getItem(int lineNumber) {
         String line;
@@ -115,32 +96,32 @@ public class Product {
     }
 
 
-    private static void ReadFromFile() {
-        try {
-            File myFile = new File("menu.txt");
-            FileReader reader = new FileReader(myFile);
-            BufferedReader buff = new BufferedReader(reader);
-            String line = null;
-            while ((line = buff.readLine()) != null) {
-                System.out.println(line);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void WriteToFile() {
-        try {
-            FileWriter writer = new FileWriter("menu.txt", true);
-            writer.write("Iced Tea Drink Sweetened Tea $0.99 \n");
-            writer.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private static void ReadFromFile() {
+//        try {
+//            File myFile = new File("menu.txt");
+//            FileReader reader = new FileReader(myFile);
+//            BufferedReader buff = new BufferedReader(reader);
+//            String line = null;
+//            while ((line = buff.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    private static void WriteToFile() {
+//        try {
+//            FileWriter writer = new FileWriter("menu.txt", true);
+//            writer.write("Iced Tea Drink Sweetened Tea $0.99 \n");
+//            writer.close();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
