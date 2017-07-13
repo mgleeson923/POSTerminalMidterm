@@ -44,7 +44,7 @@ public class POSMain {
                 default:
                     break;
             }
-            cont = validator.getContinue("Continue? (y/n)", scnr.nextLine());
+            //cont = validator.getContinue("Continue? (y/n)", scnr.nextLine());
         }
     }
 }
