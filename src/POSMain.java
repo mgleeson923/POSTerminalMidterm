@@ -40,9 +40,9 @@ public class POSMain {
                     break;
                 case 2:
                     //System.out.println("What Line Number?");
-                    sizeOfCart = validator.getInt(scnr, "What Line Number?");
+                    sizeOfCart = validator.getInt(scnr, "What Line Number?: ");
                     //System.out.println("How Many?");
-                    quantity = validator.getInt(scnr, "How Many");
+                    quantity = validator.getInt(scnr, "How Many: ");
                     ;
                     String menuItemtoAdd = menu.mapName.get(sizeOfCart);
                     String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
@@ -82,6 +82,8 @@ public class POSMain {
                 break;
             case 2:
                 CreditCard cc = new CreditCard();
+                subtotal = cc.subtotal(cartPayment, quantity);
+                System.out.println(subtotal);
                 cc.getCreditCardNum();
                 cc.getcVV();
                 cc.getExpDate();

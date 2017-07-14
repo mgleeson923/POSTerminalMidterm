@@ -120,7 +120,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product" + mapName + mapPrice + mapQuantity;
+
+        return " " + mapName + " " + mapPrice + " " + mapQuantity;
     }
 } // end class
 
