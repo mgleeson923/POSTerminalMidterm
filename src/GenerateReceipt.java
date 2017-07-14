@@ -9,6 +9,13 @@
  * Mark Ritter
  * Vernon Scott
  */
-public class GenerateReceipt {
+public class  GenerateReceipt{
+
+
+
+
+
 
 }
+
+

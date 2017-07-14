@@ -30,6 +30,8 @@ public class POSMain {
         //menu.createMenu(0);
 
         System.out.println("POS Terminal Console");
+        //open receipt txt file
+
 
         while (cont) {
             caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
@@ -70,36 +72,49 @@ public class POSMain {
 
     public static void paymentSwitch(int payOption, HashMap<Integer, String> cartPayment, HashMap<Integer, String> quantity, Scanner scnr) {
         switch (payOption) {
+
+
+
+
             case 1:
                 Cash cash = new Cash();
-                //int[] lineTotalindex = quantity.keySet();
-//                double lineTotal = cash.linetotal(cartPayment, quantity, 2);
-//                System.out.println(lineTotal);
                 System.out.println("Amount Due:");
                 double subtotal = cash.subtotal(cartPayment, quantity);
-                System.out.printf("%.2f", subtotal);
+                System.out.printf("Subtotal: " +"%.2f", subtotal);
                 System.out.println();
                 double grandTotal = cash.getgrandtotal(subtotal);
-                System.out.printf("%.2f", grandTotal);
+                System.out.printf("Grand Total: " +"%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
                 double change = cash.getChangeGiven(cashReceived, subtotal);
                 System.out.printf("Change: " + "%.2f", change);
-
                 break;
             case 2:
                 CreditCard cc = new CreditCard();
-                subtotal = cc.subtotal(cartPayment, quantity);
-                System.out.println(subtotal);
+                System.out.println();
                 cc.getCreditCardNum();
                 cc.getcVV();
                 cc.getExpDate();
-                System.out.println("Thank you for your payment");
+                subtotal = cc.subtotal(cartPayment, quantity);
+                System.out.printf("Subtotal: " +"%.2f", subtotal);
+                System.out.println();
+                grandTotal = cc.getgrandtotal(subtotal);
+                System.out.printf("Grand Total: " + "%.2f", grandTotal);
+                System.out.println();
+                System.out.println("Credit Card Accepted: Thank you for your payment");
+
                 break;
             case 3:
                 Check check = new Check();
                 check.getCheckNum();
-                System.out.println("Thank you for your payment");
+                subtotal = check.subtotal(cartPayment, quantity);
+                System.out.printf("Subtotal: " +"%.2f", subtotal);
+                System.out.println();
+                grandTotal = check.getgrandtotal(subtotal);
+                System.out.printf("Grand Total: " +"%.2f", grandTotal);
+                System.out.println();
+                System.out.println("Check Accepted: Thank you for your payment");
+
                 break;
         }
 
