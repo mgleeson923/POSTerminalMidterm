@@ -19,8 +19,8 @@ public abstract class Payment {
     public double subtotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity) {
         double subTotal = 0;
 
-        for (String value : price.values()) {
-            subTotal += Double.parseDouble(value);
+        for (int Key : price.keySet()) {
+            subTotal += Double.parseDouble(price.get(Key)) * Double.parseDouble(quantity.get(Key));
         }
         return subTotal;
     }
