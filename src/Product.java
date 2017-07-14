@@ -116,13 +116,13 @@ public class Product {
             s3 = mapDescription.get(i);
             s4 = mapPrice.get(i);
 
-            System.out.println(i + "\t" + s1+"\t"+s2+"\t"+s3+"\t"+s4);
-
+            System.out.println(i + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
 
 
 //        }
 
-        }return products;
+        }
+        return products;
     }// end method
 
 
@@ -207,5 +207,5 @@ public class Product {
 //            e.printStackTrace();
 //        }
 //    }
-    }
+}
 
