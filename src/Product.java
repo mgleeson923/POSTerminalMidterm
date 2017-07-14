@@ -18,20 +18,17 @@ import java.util.Scanner;
 public class Product {
 // declare variables
 
-    private HashMap<Integer, String> mapName = new HashMap<>();
-    private HashMap<Integer, String> mapCategory = new HashMap<>();
-    private HashMap<Integer, String> mapDescription = new HashMap<>();
-    private HashMap<Integer, String> mapPrice = new HashMap<>();
-    private ArrayList<String> products = new ArrayList<>();
-    ArrayList<Product> shoppingCart = new ArrayList<>();
-
+    public HashMap<Integer, String> mapName = new HashMap<>();
+    public HashMap<Integer, String> mapCategory = new HashMap<>();
+    public HashMap<Integer, String> mapDescription = new HashMap<>();
+    public HashMap<Integer, String> mapPrice = new HashMap<>();
 
     // default constructor
-    private Product() {
+    public Product() {
 
     }
 
-    public ArrayList<String> createMenu(int showOutput) {
+    public ArrayList<HashMap<Integer, String>> createMenu(int showOutput) {
         /*
         Creates menu of items from a text file called menu.txt.
         Returns an ArrayList of Strings called name, category, description, price
@@ -94,7 +91,78 @@ public class Product {
             System.out.println(i + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
 
         }
-        return products;
+
+        ArrayList<HashMap<Integer, String>> productListFromMenu = new ArrayList<>();
+        productListFromMenu.add(mapName);
+        productListFromMenu.add(mapPrice);
+
+        return productListFromMenu;
+    }// end method
+
+    public ArrayList<HashMap<Integer, String>> addToCart(int lineNumber) {
+
+        String line;
+
+        try {
+            File myFile = new File("menu.txt");
+            FileReader reader = new FileReader(myFile);
+            BufferedReader buff = new BufferedReader(reader);
+
+            int counter = 1;
+            while ((line = buff.readLine()) != null) {
+
+                char comma = ',';
+                int commaLocation = 0;
+                int startLocation = 0;
+                int commaCount = 0;
+
+                for (int i = 0; i < line.length(); i++) {
+                    if (line.charAt(i) == comma && commaCount == 0) {
+                        commaLocation = i;
+                        mapName.put(counter, line.substring(startLocation, commaLocation));
+                        commaCount++;
+                        startLocation = commaLocation + 1;
+                    } else if (line.charAt(i) == comma && commaCount == 1) {
+                        commaLocation = i;
+                        mapCategory.put(counter, line.substring(startLocation, commaLocation));
+                        commaCount++;
+                        startLocation = commaLocation + 1;
+                    } else if (line.charAt(i) == comma && commaCount == 2) {
+                        commaLocation = i;
+                        mapDescription.put(counter, line.substring(startLocation, commaLocation));
+                        commaCount++;
+                        startLocation = commaLocation + 1;
+                    } else if (commaCount == 3) {
+                        commaLocation = i;
+                        mapPrice.put(counter, line.substring(commaLocation, line.length()));
+                        commaCount++;
+                    }
+                }
+                counter++;
+            }
+            buff.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String s1 = "";
+        String s2 = "";
+        String s3 = "";
+        String s4 = "";
+        s1 = mapName.get(lineNumber);
+        s2 = mapCategory.get(lineNumber);
+        s3 = mapDescription.get(lineNumber);
+        s4 = mapPrice.get(lineNumber);
+
+        System.out.println(lineNumber + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
+
+
+        ArrayList<HashMap<Integer, String>> shoppingCart = new ArrayList<>();
+        shoppingCart.add(mapName);
+        shoppingCart.add(mapPrice);
+
+        return shoppingCart;
     }// end method
 
 } // end class

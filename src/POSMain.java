@@ -28,15 +28,14 @@ public class POSMain {
         System.out.println("POS Terminal Console");
 
         while (cont) {
-            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Menu\n3: Add Item to Cart\n4: Checkout\n", 1, 3);
+            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: Add Item to Cart\n4: Checkout\n", 1, 3);
             switch (caseNumber) {
                 case 1:
                     System.out.println(menu.createMenu(0));
                     break;
-//                case 2:
-//                    menu.getItem();
-//                    System.out.println("New Cart is \n" + menu.toString());
-//                    break;
+                case 2:
+                    cart.addToCart(scnr.nextInt());
+                    break;
 //                case 3:
 //                    cart.getItem();
 //                    System.out.println("New Cart is \n" + cart.getItem());
