@@ -74,21 +74,18 @@ public class Product {
                 int commaLocation = 0;
                 int startLocation = 0;
                 int commaCount = 0;
-                String temp2 = "";
 
                 for (int i = 0; i < line.length(); i++) {
                     if (line.charAt(i) == comma && commaCount == 0) {
                         commaLocation = i;
                         mapName.put(counter, line.substring(startLocation, commaLocation));
                         commaCount++;
-                        temp2 = line.substring(startLocation, commaLocation);
                         startLocation = commaLocation + 1;
 
                     } else if (line.charAt(i) == comma && commaCount == 1) {
                         commaLocation = i;
                         mapCategory.put(counter, line.substring(startLocation, commaLocation));
                         commaCount++;
-                        temp2 = line.substring(startLocation, commaLocation);
                         startLocation = commaLocation + 1;
                     } else if (line.charAt(i) == comma && commaCount == 2) {
                         commaLocation = i;
@@ -119,7 +116,7 @@ public class Product {
             s3 = mapDescription.get(i);
             s4 = mapPrice.get(i);
 
-            System.out.println(s1+"\t"+s2+"\t"+s3+"\t"+s4);
+            System.out.println(i + "\t" + s1+"\t"+s2+"\t"+s3+"\t"+s4);
 
 
 
