@@ -118,10 +118,6 @@ public class Product {
 
             System.out.println(i + "\t" + s1+"\t"+s2+"\t"+s3+"\t"+s4);
 
-
-
-//        }
-
         }return products;
     }// end method
 
