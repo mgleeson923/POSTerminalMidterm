@@ -13,7 +13,6 @@ import java.util.Scanner;
  */
 public class CreditCard extends Payment {
 
-
     public String creditCardNum;
     public String cVV;
     public String expDate;

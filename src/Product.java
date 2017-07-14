@@ -58,29 +58,7 @@ public class Product {
                 int startLocation = 0;
                 int commaCount = 0;
 
-                for (int i = 0; i < line.length(); i++) {
-                    if (line.charAt(i) == comma && commaCount == 0) {
-                        commaLocation = i;
-                        mapName.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-
-                    } else if (line.charAt(i) == comma && commaCount == 1) {
-                        commaLocation = i;
-                        mapCategory.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-                    } else if (line.charAt(i) == comma && commaCount == 2) {
-                        commaLocation = i;
-                        mapDescription.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-                    } else if (commaCount == 3) {
-                        commaLocation = i;
-                        mapPrice.put(counter, line.substring(commaLocation, line.length()));
-                        commaCount++;
-                    }
-                }
+                populateMenu(line, counter, comma, startLocation, commaCount);
                 counter++;
             }
             buff.close();
@@ -88,6 +66,43 @@ public class Product {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        printMenu();
+
+        ArrayList<HashMap<Integer, String>> productListFromMenu = new ArrayList<>();
+        productListFromMenu.add(mapName);
+        productListFromMenu.add(mapPrice);
+
+        return productListFromMenu;
+    } // end method
+
+    public void populateMenu(String line, int counter, char comma, int startLocation, int commaCount) {
+        int commaLocation;
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == comma && commaCount == 0) {
+                commaLocation = i;
+                mapName.put(counter, line.substring(startLocation, commaLocation));
+                commaCount++;
+                startLocation = commaLocation + 1;
+
+            } else if (line.charAt(i) == comma && commaCount == 1) {
+                commaLocation = i;
+                mapCategory.put(counter, line.substring(startLocation, commaLocation));
+                commaCount++;
+                startLocation = commaLocation + 1;
+            } else if (line.charAt(i) == comma && commaCount == 2) {
+                commaLocation = i;
+                mapDescription.put(counter, line.substring(startLocation, commaLocation));
+                commaCount++;
+                startLocation = commaLocation + 1;
+            } else if (commaCount == 3) {
+                commaLocation = i;
+                mapPrice.put(counter, line.substring(commaLocation, line.length()));
+                commaCount++;
+            }
+        }
+    }
+
+    public void printMenu() {
         for (int i = 1; i <= mapName.size(); i++) {
             String s1 = "";
             String s2 = "";
@@ -99,81 +114,9 @@ public class Product {
             s4 = mapPrice.get(i);
 
             System.out.println(i + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
-
         }
+    }
 
-        ArrayList<HashMap<Integer, String>> productListFromMenu = new ArrayList<>();
-        productListFromMenu.add(mapName);
-        productListFromMenu.add(mapPrice);
-
-        return productListFromMenu;
-    } // end method
-
-    public ArrayList<HashMap<Integer, String>> addToCart(int lineNumber) {
-
-        String line;
-
-        try {
-            File myFile = new File("menu.txt");
-            FileReader reader = new FileReader(myFile);
-            BufferedReader buff = new BufferedReader(reader);
-
-            int counter = 1;
-            while ((line = buff.readLine()) != null) {
-
-                char comma = ',';
-                int commaLocation = 0;
-                int startLocation = 0;
-                int commaCount = 0;
-
-                for (int i = 0; i < line.length(); i++) {
-                    if (line.charAt(i) == comma && commaCount == 0) {
-                        commaLocation = i;
-                        mapName.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-                    } else if (line.charAt(i) == comma && commaCount == 1) {
-                        commaLocation = i;
-                        mapCategory.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-                    } else if (line.charAt(i) == comma && commaCount == 2) {
-                        commaLocation = i;
-                        mapDescription.put(counter, line.substring(startLocation, commaLocation));
-                        commaCount++;
-                        startLocation = commaLocation + 1;
-                    } else if (commaCount == 3) {
-                        commaLocation = i;
-                        mapPrice.put(counter, line.substring(commaLocation, line.length()));
-                        commaCount++;
-                    }
-                }
-                counter++;
-            }
-            buff.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String s1 = "";
-        String s2 = "";
-        String s3 = "";
-        String s4 = "";
-        s1 = mapName.get(lineNumber);
-        s2 = mapCategory.get(lineNumber);
-        s3 = mapDescription.get(lineNumber);
-        s4 = mapPrice.get(lineNumber);
-
-        System.out.println(lineNumber + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
-
-
-        ArrayList<HashMap<Integer, String>> shoppingCart = new ArrayList<>();
-        shoppingCart.add(mapName);
-        shoppingCart.add(mapPrice);
-
-        return shoppingCart;
-    }// end method
 
     @Override
     public String toString() {

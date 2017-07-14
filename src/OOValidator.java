@@ -1,170 +1,78 @@
 import java.util.Scanner;
 
-/**
- * Midterm Project Grand Circus
- *
- * Java June 2017
- *
- * (Alphabetical Order)
- * Michael Gleeson
- * Matthew Menna
- * Mark Ritter
- * Vernon Scott
- *
- */
-
 public class OOValidator {
-    static Scanner sc = new Scanner(System.in);
-    private static boolean validEntry = false;
-    /**
-     * @param sc
-     */
-//    public OOValidator(Scanner sc) {
-//
-//    }
-    /**
-     * @param prompt String output to the console
-     * @return
-     */
-    public int getInt(String prompt) {
-        int returnInt = 0;
-        String sInput;
-        while (!validEntry) {
-            System.out.println(prompt);
-            sInput = sc.nextLine();
-            if (sInput.matches("[1234567890]+")) {
-                returnInt = Integer.parseInt(sInput);
-                validEntry = true;
-            } else {
-                System.out.println("Please Try Again");
-            } // end else
-        } // end while
-        validEntry = false;
-        return returnInt;
-    } // end method
-    /**
-     * @param prompt String output to the console
-     * @param min
-     * @param max
-     * @return
-     */
-    public int getIntWithinRange(String prompt, int min, int max) {
-        int returnInt = 0;
-        String sInput;
-        while (!validEntry) {
-            System.out.println(prompt);
-            sInput = sc.nextLine();
-            try {
-                if (sInput.matches("[1234567890]+") && (Integer.parseInt(sInput) < min || Integer.parseInt(sInput) > max)) {
-                    System.out.println("Please Try Again");
-                } else {
-                    returnInt = Integer.parseInt(sInput);
-                    validEntry = true;
-                } // end else
-            } catch (NumberFormatException e) {
-                System.out.println("Please Try Againtest");
-                continue;
-            }
-        } // end while
-        validEntry = false;
-        return returnInt;
-    } // end method
-    /**
-     * @param prompt String output to the console
-     * @return
-     */
-    public double getDouble(String prompt) {
-        double returnDouble = 0;
-        String sInput;
-        while (!validEntry) {
-            System.out.println(prompt);
-            sInput = sc.nextLine();
-            if (sInput.matches("[1234567890]+")) {
-                returnDouble = Double.valueOf(sInput);
-                validEntry = true;
-            } else {
-                System.out.println("Please Try Again");
-            } // end else
-        } // end while
-        validEntry = false;
-        return returnDouble;
+    public static String getString(Scanner sc, String prompt) {
+        System.out.print(prompt);
+        String s = sc.next();  // read user entry
+        sc.nextLine();  // discard any other data entered on the line
+        return s;
     }
-    /**
-     * @param prompt String output to the console
-     * @param min
-     * @param max
-     * @return
-     */
-    public double getDoubleWithinRange(String prompt, double min, double max) {
-        double returnDouble = 0;
-        String sInput;
-        while (!validEntry) {
-            System.out.println(prompt);
-            sInput = sc.nextLine();
-            try {
-                if (sInput.matches("[1234567890]+") && (Double.valueOf(sInput) < min || Double.valueOf(sInput) > max)) {
-                    System.out.println("Please Try Again");
-                } else {
-                    returnDouble = Double.valueOf(sInput);
-                    validEntry = true;
-                } // end else
-            } catch (NumberFormatException e) {
-                System.out.println("Please Try Again");
-                continue;
+
+    public static int getInt(Scanner sc, String prompt) {
+        int i = 0;
+        boolean isValid = false;
+        while (isValid == false) {
+            System.out.print(prompt);
+            if (sc.hasNextInt()) {
+                i = sc.nextInt();
+                isValid = true;
+            } else {
+                System.out.println("Error! Invalid integer value. Try again.");
             }
-        } // end while
-        validEntry = false;
-        return returnDouble;
-    } // end method
-    /**
-     *
-     * @param prompt String output to the console
-     * @return
-     */
-    public String getRequiredString(String prompt) {
-        System.out.println(prompt);
-        String rString = sc.nextLine();
-        return rString;
-    } // end method
-    public String getRequiredString(String prompt, String sCase) {
-        System.out.println(prompt);
-        if (sCase.equalsIgnoreCase("upper")){
-            String rString = sc.nextLine().toUpperCase();
-            return rString;
-        } else if ( sCase.equalsIgnoreCase("lower")){
-            String rString = sc.nextLine().toLowerCase();
-            return rString;
-        } else {
-            String rString = sc.nextLine();
-            return rString;
+            sc.nextLine();  // discard any other data entered on the line
         }
-    } // end method
-    /**
-     *
-     * @param prompt String output to the console
-     * @param s1
-     * @param s2
-     * @return
-     */
-    public String getChoiceString(String prompt, String s1, String s2) {
-        String rString = "empty";
-        return rString;
-    } // end method
-    public boolean getContinue(String prompt, String sInput){
-        //String[] contArray = {"yes", "y"};
-        char wCont = 'y';
-        while ( wCont != 'n' ) {
-            System.out.println(prompt);
-            if (sInput.toLowerCase().equals("yes") || sInput.toLowerCase().equals("y")) {
-                return true;
-            } else if(sInput.toLowerCase().equals("no") || sInput.toLowerCase().equals("n")){
-                break;
-            }
-            else {
-                System.out.println("Please try again");
-                sInput = sc.nextLine();
-            }
+        return i;
+    }
+
+    public static int getInt(Scanner sc, String prompt,
+                             int min, int max) {
+        int i = 0;
+        boolean isValid = false;
+        while (isValid == false) {
+            i = getInt(sc, prompt);
+            if (i < min)
+                System.out.println(
+                        "Error! Number must be " + min + " or greater.");
+            else if (i > max)
+                System.out.println(
+                        "Error! Number must be " + max + " or less.");
+            else
+                isValid = true;
         }
-        return false;
-    } // end method
+        return i;
+    }
+
+    public static double getDouble(Scanner sc, String prompt) {
+        double d = 0;
+        boolean isValid = false;
+        while (isValid == false) {
+            System.out.print(prompt);
+            if (sc.hasNextDouble()) {
+                d = sc.nextDouble();
+                isValid = true;
+            } else {
+                System.out.println("Error! Invalid decimal value. Try again.");
+            }
+            sc.nextLine();  // discard any other data entered on the line
+        }
+        return d;
+    }
+
+    public static double getDouble(Scanner sc, String prompt,
+                                   double min, double max) {
+        double d = 0;
+        boolean isValid = false;
+        while (isValid == false) {
+            d = getDouble(sc, prompt);
+            if (d < min)
+                System.out.println(
+                        "Error! Number must be " + min + " or greater.");
+            else if (d > max)
+                System.out.println(
+                        "Error! Number must be " + max + " or less.");
+            else
+                isValid = true;
+        }
+        return d;
+    }
 }

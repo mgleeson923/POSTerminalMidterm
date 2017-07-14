@@ -3,18 +3,18 @@ import java.util.Scanner;
 
 /**
  * Midterm Project Grand Circus
- *
+ * <p>
  * Java June 2017
- *
+ * <p>
  * (Alphabetical Order)
  * Michael Gleeson
  * Matthew Menna
  * Mark Ritter
  * Vernon Scott
- *
  */
 
 public class POSMain {
+
     public static void main(String[] args) {
         System.out.println("Welcome to M3V! My Name is Jarvis, How can I serve you? ");
 
@@ -32,29 +32,33 @@ public class POSMain {
         System.out.println("POS Terminal Console");
 
         while (cont) {
-            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
+            caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
             switch (caseNumber) {
                 case 1:
                     menu.createMenu(0);
+                    System.out.println("---------------------------");
                     break;
                 case 2:
-                    System.out.println("What Line Number?");
-                    sizeOfCart = scnr.nextInt();
-                    System.out.println("How Many?");
-                    quantity = scnr.nextInt();
+                    //System.out.println("What Line Number?");
+                    sizeOfCart = validator.getInt(scnr, "What Line Number?");
+                    //System.out.println("How Many?");
+                    quantity = validator.getInt(scnr, "How Many");
+                    ;
                     String menuItemtoAdd = menu.mapName.get(sizeOfCart);
                     String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
                     cart.mapName.put(sizeOfCart, menuItemtoAdd);
                     cart.mapPrice.put(sizeOfCart, menuPricetoAdd);
                     cart.mapQuantity.put(sizeOfCart, Integer.toString(quantity));
+                    System.out.println("---------------------------");
                     break;
                 case 3:
                     System.out.println("New Cart is \n" + cart.toString());
+                    System.out.println("---------------------------");
                     break;
                 case 4:
                     System.out.println("How would you like to pay?");
-                    payOption = validator.getIntWithinRange("1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
-                    paymentSwitch(payOption, cart.mapPrice, cart.mapQuantity);
+                    payOption = validator.getInt(scnr, "1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
+                    paymentSwitch(payOption, cart.mapPrice, cart.mapQuantity, scnr);
                     cont = false;
                     break;
                 default:
@@ -63,12 +67,17 @@ public class POSMain {
         }
     }
 
-    public static void paymentSwitch(int payOption, HashMap<Integer, String> cartPayment, HashMap<Integer, String> quantity) {
+    public static void paymentSwitch(int payOption, HashMap<Integer, String> cartPayment, HashMap<Integer, String> quantity, Scanner scnr) {
         switch (payOption) {
             case 1:
                 Cash cash = new Cash();
                 System.out.println("Amount Due:");
-                System.out.println(cash.subtotal(cartPayment, quantity));
+                double subtotal = cash.subtotal(cartPayment, quantity);
+                System.out.println(subtotal);
+                double cashReceived = cash.getCashReceived(scnr);
+                double change = cash.getChangeGiven(cashReceived, subtotal);
+                System.out.println(change);
+
                 break;
             case 2:
                 CreditCard cc = new CreditCard();

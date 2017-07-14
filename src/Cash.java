@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Midterm Project Grand Circus
  *
@@ -15,32 +17,19 @@ public class Cash extends Payment {
     public double changeGiven;
 
     @Override
-     public double generatePayment(double i){
-
+    public double generatePayment(double i){
         return changeGiven;
     }
 
-    public double takePayment() {
+    public double getCashReceived(Scanner sc) {
 
-        return changeGiven;
+        double cashReceived = validator.getInt(sc, "Enter the total dollars you are paying with");
+        return cashReceived;
     }
 
-    public double getCashReceived() {
-        return getCashReceived();
-    }
-
-    public void setCashRecieved(double cashReceived) {
-        this.cashReceived = cashReceived;
-    }
-
-    public double getChangeGiven(double totalPayment,double grandTotal) {
+    public double getChangeGiven(double cashReceived, double subtotal) {
+        changeGiven = cashReceived - subtotal;
         return changeGiven;// totalPayment-grandTotal
     }
-
-    public void setChangeGiven(double changeGiven) {
-        this.changeGiven = changeGiven;
-    }
-
-
 
 }
