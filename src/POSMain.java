@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -53,7 +54,7 @@ public class POSMain {
                 case 4:
                     System.out.println("How would you like to pay?");
                     payOption = validator.getIntWithinRange("1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
-                    paymentSwitch(payOption);
+                    paymentSwitch(payOption,cart.mapPrice);
                     cont = false;
                     break;
                 default:
@@ -62,11 +63,12 @@ public class POSMain {
         }
     }
 
-    private static void paymentSwitch(int payOption) {
+    public static void paymentSwitch(int payOption, HashMap<Integer,String>cartPayment) {
         switch (payOption) {
             case 1:
                 Cash cash = new Cash();
                 System.out.println("Amount Due:");
+                cash.subtotal(cartPayment);
                 break;
             case 2:
                 CreditCard cc = new CreditCard();

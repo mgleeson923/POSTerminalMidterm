@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,15 @@ import java.util.Scanner;
 
 public abstract class Payment {
     Scanner scan= new Scanner(System.in);
+
+    //public  double subtotal(HashMap<Integer,String>price)//{
+        //for (HashMap :) {
+
+        //}
+
+    //}
+
+
 
     public double generatePayment (double i){
         return 0;
