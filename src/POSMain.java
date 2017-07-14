@@ -39,11 +39,8 @@ public class POSMain {
                     System.out.println("---------------------------");
                     break;
                 case 2:
-                    //System.out.println("What Line Number?");
                     sizeOfCart = validator.getInt(scnr, "What Line Number?: ");
-                    //System.out.println("How Many?");
                     quantity = validator.getInt(scnr, "How Many: ");
-                    ;
                     String menuItemtoAdd = menu.mapName.get(sizeOfCart);
                     String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
                     cart.mapName.put(sizeOfCart, menuItemtoAdd);
@@ -52,7 +49,10 @@ public class POSMain {
                     System.out.println("---------------------------");
                     break;
                 case 3:
-                    System.out.println("New Cart is \n" + cart.toString());
+                    System.out.println("New Cart is \n" );
+                    for (int Key : cart.mapName.keySet()) {
+                        System.out.println("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key));
+                    }
                     System.out.println("---------------------------");
                     break;
                 case 4:
