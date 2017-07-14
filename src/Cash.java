@@ -23,7 +23,7 @@ public class Cash extends Payment {
 
     public double getCashReceived(Scanner sc) {
 
-        double cashReceived = validator.getInt(sc, "Enter the total dollars you are paying with");
+        double cashReceived = validator.getDouble(sc, "Enter the total dollars you are paying with");
         return cashReceived;
     }
 

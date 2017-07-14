@@ -73,10 +73,11 @@ public class POSMain {
                 Cash cash = new Cash();
                 System.out.println("Amount Due:");
                 double subtotal = cash.subtotal(cartPayment, quantity);
-                System.out.println(subtotal);
+                System.out.printf("%.2f", subtotal);
+                System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
                 double change = cash.getChangeGiven(cashReceived, subtotal);
-                System.out.println(change);
+                System.out.printf("Change: " + "%.2f", change);
 
                 break;
             case 2:
