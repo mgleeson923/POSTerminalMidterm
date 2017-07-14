@@ -107,7 +107,7 @@ public class Product {
         productListFromMenu.add(mapPrice);
 
         return productListFromMenu;
-    }// end method
+    } // end method
 
     public ArrayList<HashMap<Integer, String>> addToCart(int lineNumber) {
 
