@@ -11,8 +11,7 @@ import java.util.Scanner;
  * Mark Ritter
  * Vernon Scott
  */
-public abstract class CreditCard extends Payment {
-
+public class CreditCard extends Payment {
 
 
     public String creditCardNum;
@@ -27,6 +26,9 @@ public abstract class CreditCard extends Payment {
     }
 
     public String getCreditCardNum() {
+        System.out.println("Please enter your credit card number");
+        creditCardNum = scan.nextLine();
+
         return creditCardNum;
     }
 
@@ -35,7 +37,11 @@ public abstract class CreditCard extends Payment {
     }
 
     public String getcVV() {
+
+        System.out.println("Please enter your CVV");
+        cVV = scan.nextLine();
         return cVV;
+
     }
 
     public void setcVV(String cVV) {
@@ -43,6 +49,8 @@ public abstract class CreditCard extends Payment {
     }
 
     public String getExpDate() {
+        System.out.println("Please enter your Exp Date");
+        expDate = scan.nextLine();
         return expDate;
     }
 

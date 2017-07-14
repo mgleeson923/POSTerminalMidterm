@@ -23,6 +23,9 @@ public class Check extends Payment {
 
 
     public String getCheckNum() {
+
+        System.out.println("Enter Check #");
+        checkNum = scan.nextLine();
         return checkNum;
     }
 

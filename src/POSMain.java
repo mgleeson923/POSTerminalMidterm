@@ -21,6 +21,7 @@ public class POSMain {
         boolean cont = true;
         int caseNumber;
         int quantity;
+        int payOption;
         Scanner scnr = new Scanner(System.in);
         OOValidator validator = new OOValidator();
         Product menu = new Product();
@@ -30,7 +31,7 @@ public class POSMain {
         System.out.println("POS Terminal Console");
 
         while (cont) {
-            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 3);
+            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
             switch (caseNumber) {
                 case 1:
                     menu.createMenu(0);
@@ -50,10 +51,34 @@ public class POSMain {
                     System.out.println("New Cart is \n" + cart.toString());
                     break;
                 case 4:
+                    System.out.println("How would you like to pay?");
+                    payOption = validator.getIntWithinRange("1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
+                    paymentSwitch(payOption);
                     break;
                 default:
                     break;
             }
+        }
+    }
+
+    private static void paymentSwitch(int payOption) {
+        switch (payOption) {
+            case 1:
+                Cash cash = new Cash();
+                System.out.println("Amount Due:");
+                break;
+            case 2:
+                CreditCard cc = new CreditCard();
+                cc.getCreditCardNum();
+                cc.getcVV();
+                cc.getExpDate();
+                System.out.println("Thank you");
+                break;
+            case 3:
+                Check check = new Check();
+                check.getCheckNum();
+                System.out.println("Thank you for your payment");
+                break;
         }
     }
 }
