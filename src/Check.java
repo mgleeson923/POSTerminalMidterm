@@ -1,7 +1,15 @@
 import java.util.Scanner;
 
 /**
- * Created by vernonscott on 7/13/17.
+ * Midterm Project Grand Circus
+ *
+ * Java June 2017
+ *
+ * (Alphabetical Order)
+ * Michael Gleeson
+ * Matthew Menna
+ * Mark Ritter
+ * Vernon Scott
  */
 public class Check extends Payment {
     private String checkNum;
@@ -15,6 +23,9 @@ public class Check extends Payment {
 
 
     public String getCheckNum() {
+
+        System.out.println("Enter Check #");
+        checkNum = scan.nextLine();
         return checkNum;
     }
 

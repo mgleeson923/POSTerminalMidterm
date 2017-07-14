@@ -1,6 +1,15 @@
 /**
- * Created by vernonscott on 7/13/17.
+ * Midterm Project Grand Circus
+ *
+ * Java June 2017
+ *
+ * (Alphabetical Order)
+ * Michael Gleeson
+ * Matthew Menna
+ * Mark Ritter
+ * Vernon Scott
  */
+
 public class Cash extends Payment {
     private double cashReceived;
     public double changeGiven;
