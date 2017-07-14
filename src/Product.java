@@ -19,9 +19,9 @@ public class Product {
 // declare variables
 
     public HashMap<Integer, String> mapName = new HashMap<>();
-    public HashMap<String, String> mapCategory = new HashMap<String, String>();
-    public HashMap<String, String> mapDescription = new HashMap<String, String>();
-    public HashMap<String, String> mapPrice = new HashMap<String, String>();
+    public HashMap<Integer, String> mapCategory = new HashMap<>();
+    public HashMap<Integer, String> mapDescription = new HashMap<>();
+    public HashMap<Integer, String> mapPrice = new HashMap<>();
     private String name[] = new String[12];
     private String category[] = new String[12];
     private String description[] = new String[12];
@@ -67,9 +67,9 @@ public class Product {
             FileReader reader = new FileReader(myFile);
             BufferedReader buff = new BufferedReader(reader);
 
-
+            int counter = 1;
             while ((line = buff.readLine()) != null) {
-                int counter = 1;
+
                 char comma = ',';
                 int commaLocation = 0;
                 int startLocation = 0;
@@ -83,101 +83,104 @@ public class Product {
                         commaCount++;
                         temp2 = line.substring(startLocation, commaLocation);
                         startLocation = commaLocation + 1;
-                        System.out.println(temp2);
-                    }
 
-
-                    else if (line.charAt(i) == comma && commaCount == 1) {
+                    } else if (line.charAt(i) == comma && commaCount == 1) {
                         commaLocation = i;
-                        System.out.println(commaLocation);
-                        mapCategory.put(temp2, line.substring(startLocation, commaLocation));
-
+                        mapCategory.put(counter, line.substring(startLocation, commaLocation));
                         commaCount++;
                         temp2 = line.substring(startLocation, commaLocation);
                         startLocation = commaLocation + 1;
-                        System.out.println(temp2);
-                    }
-
-                    else if (line.charAt(i) == comma && commaCount == 2) {
+                    } else if (line.charAt(i) == comma && commaCount == 2) {
                         commaLocation = i;
-                        mapDescription.put(temp2, line.substring(startLocation, commaLocation));
+                        mapDescription.put(counter, line.substring(startLocation, commaLocation));
                         commaCount++;
                         startLocation = commaLocation + 1;
-                        mapPrice.put(temp2, line.substring(commaLocation));
-                        System.out.println(temp2);
+                    } else if (commaCount == 3) {
+                        commaLocation = i;
+                        mapPrice.put(counter, line.substring(commaLocation, line.length()));
+                        commaCount++;
                     }
 
                 }
-
+                counter++;
             }
             buff.close();
-            System.out.println("Map Size " + mapCategory.size());
+            //System.out.println(mapName.size() + " " + mapCategory.size() + " " + mapDescription.size() + " " + mapPrice.size() );
         } catch (Exception e) {
             e.printStackTrace();
         }
+        for (int i = 1; i <= mapName.size(); i++) {
+            String s1 = "";
+            String s2 = "";
+            String s3 = "";
+            String s4 = "";
+            s1 = mapName.get(i);
+            s2 = mapCategory.get(i);
+            s3 = mapDescription.get(i);
+            s4 = mapPrice.get(i);
+
+            System.out.println(s1+"\t"+s2+"\t"+s3+"\t"+s4);
+
+
+
+//        }
+
+        }return products;
+    }// end method
+
+
+//    public ArrayList<Product> getItem() {
+//        Scanner scnr = new Scanner(System.in);
+//        String repeat;
+//        do {
+//            System.out.print("Please enter the item you would like to add to your order: ");
+//            int userItem = scnr.nextInt();
+//
+//            System.out.println("How many would you like?");
+//            int itemQuantity = scnr.nextInt();
+//
+//            Product prod = new Product();
+//            prod.setQuantity(itemQuantity);
+//            prod.setProductID(userItem);
+//            shoppingCart.add(prod);
+//
+//            System.out.println("Would you like to add another item? Y/N: ");
+//            scnr.nextLine();
+//            repeat = scnr.nextLine();
+//        } while (repeat.equalsIgnoreCase("y"));
+//
+//        return shoppingCart;
+//    } // end method
+//
+//    public ArrayList<String> getCart() {
+//        String line;
+//
+//        try {
+//            File myFile = new File("cart.txt");
+//            FileReader reader = new FileReader(myFile);
+//            BufferedReader buff = new BufferedReader(reader);
+//
+//            while ((line = buff.readLine()) != null) {
+//                System.out.println(line);
+//                products.add(line);
+//            }
+//            buff.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return products;
+//    }// end method
+
+//    @Override
+//    public String toString() {
 //        for (int i = 0; i < name.length; i++) {
-//            System.out.println((i + 1) + " " + name[i] + " " + price[i]);
-//            System.out.println(category[i] + " " + description[i]);
-//            System.out.println();
+//            System.out.println(name[i]);
+//            System.out.println(category[i]);
 //            System.out.println(description[i]);
 //            System.out.println(price[i]);
 //        }
-        return products;
-    } // end method
-
-
-    public ArrayList<Product> getItem() {
-        Scanner scnr = new Scanner(System.in);
-        String repeat;
-        do {
-            System.out.print("Please enter the item you would like to add to your order: ");
-            int userItem = scnr.nextInt();
-
-            System.out.println("How many would you like?");
-            int itemQuantity = scnr.nextInt();
-
-            Product prod = new Product();
-            prod.setQuantity(itemQuantity);
-            prod.setProductID(userItem);
-            shoppingCart.add(prod);
-
-            System.out.println("Would you like to add another item? Y/N: ");
-            scnr.nextLine();
-            repeat = scnr.nextLine();
-        }while (repeat.equalsIgnoreCase("y"));
-
-        return shoppingCart;
-    } // end method
-
-    public ArrayList<String> getCart() {
-        String line;
-
-        try {
-            File myFile = new File("cart.txt");
-            FileReader reader = new FileReader(myFile);
-            BufferedReader buff = new BufferedReader(reader);
-
-            while ((line = buff.readLine()) != null) {
-                System.out.println(line);
-                products.add(line);
-            }
-            buff.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return products;
-    }// end method
-
-    @Override
-    public String toString() {
-        for (int i = 0; i < name.length; i++) {
-            System.out.println(name[i]);
-            System.out.println(category[i]);
-            System.out.println(description[i]);
-            System.out.println(price[i]);
-        }
-        return products.toString();
-    }// end method
+//        return products.toString();
+//    }// end method
 
 
 //    private static void ReadFromFile() {
@@ -207,5 +210,5 @@ public class Product {
 //            e.printStackTrace();
 //        }
 //    }
-}
+    }
 

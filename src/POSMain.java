@@ -33,14 +33,14 @@ public class POSMain {
                 case 1:
                     System.out.println(menu.createMenu(0));
                     break;
-                case 2:
-                    menu.getItem();
-                    System.out.println("New Cart is \n" + menu.toString());
-                    break;
-                case 3:
-                    cart.getItem();
-                    System.out.println("New Cart is \n" + cart.getItem());
-                    break;
+//                case 2:
+//                    menu.getItem();
+//                    System.out.println("New Cart is \n" + menu.toString());
+//                    break;
+//                case 3:
+//                    cart.getItem();
+//                    System.out.println("New Cart is \n" + cart.getItem());
+//                    break;
                 case 4:
                     break;
                 default:
