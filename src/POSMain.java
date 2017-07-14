@@ -39,8 +39,8 @@ public class POSMain {
                     System.out.println("---------------------------");
                     break;
                 case 2:
-                    sizeOfCart = validator.getInt(scnr, "What Line Number?: ");
-                    quantity = validator.getInt(scnr, "How Many: ");
+                    sizeOfCart = validator.getInt(scnr, "Please enter the number of the item you wish to add to order: ");
+                    quantity = validator.getInt(scnr, "How many would you like?: ");
                     String menuItemtoAdd = menu.mapName.get(sizeOfCart);
                     String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
                     cart.mapName.put(sizeOfCart, menuItemtoAdd);
@@ -49,7 +49,7 @@ public class POSMain {
                     System.out.println("---------------------------");
                     break;
                 case 3:
-                    System.out.println("New Cart is \n" );
+                    System.out.println("Your Current Order is: \n" );
                     for (int Key : cart.mapName.keySet()) {
                         cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
                         System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key) + " " + "%.2f",cart.mapLineTotal.get(Key));
@@ -79,13 +79,14 @@ public class POSMain {
 //                System.out.println(lineTotal);
                 System.out.println("Amount Due:");
                 double subtotal = cash.subtotal(cartPayment, quantity);
-                System.out.printf("%.2f", subtotal);
+                System.out.printf("Subtotal: " +"%.2f", subtotal);
                 System.out.println();
                 double grandTotal = cash.getgrandtotal(subtotal);
-                System.out.printf("%.2f", grandTotal);
+                System.out.printf("Grand Total: " +"%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
                 double change = cash.getChangeGiven(cashReceived, subtotal);
+                System.out.println("Cash Tendered: " + cashReceived);
                 System.out.printf("Change: " + "%.2f", change);
 
                 break;
