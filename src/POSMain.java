@@ -54,6 +54,7 @@ public class POSMain {
                     System.out.println("How would you like to pay?");
                     payOption = validator.getIntWithinRange("1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
                     paymentSwitch(payOption);
+                    cont = false;
                     break;
                 default:
                     break;
@@ -72,7 +73,7 @@ public class POSMain {
                 cc.getCreditCardNum();
                 cc.getcVV();
                 cc.getExpDate();
-                System.out.println("Thank you");
+                System.out.println("Thank you for your payment");
                 break;
             case 3:
                 Check check = new Check();
@@ -80,5 +81,6 @@ public class POSMain {
                 System.out.println("Thank you for your payment");
                 break;
         }
+
     }
 }
