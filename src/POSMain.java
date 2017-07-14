@@ -51,7 +51,8 @@ public class POSMain {
                 case 3:
                     System.out.println("New Cart is \n" );
                     for (int Key : cart.mapName.keySet()) {
-                        System.out.println("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key));
+                        cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
+                        System.out.println("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key) + " " + cart.mapLineTotal.get(Key));
                     }
                     System.out.println("---------------------------");
                     break;
@@ -71,9 +72,15 @@ public class POSMain {
         switch (payOption) {
             case 1:
                 Cash cash = new Cash();
+                //int[] lineTotalindex = quantity.keySet();
+//                double lineTotal = cash.linetotal(cartPayment, quantity, 2);
+//                System.out.println(lineTotal);
                 System.out.println("Amount Due:");
                 double subtotal = cash.subtotal(cartPayment, quantity);
                 System.out.printf("%.2f", subtotal);
+                System.out.println();
+                double grandTotal = cash.getgrandtotal(subtotal);
+                System.out.printf("%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
                 double change = cash.getChangeGiven(cashReceived, subtotal);

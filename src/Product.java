@@ -32,6 +32,7 @@ public class Product {
     public HashMap<Integer, String> mapDescription = new HashMap<>();
     public HashMap<Integer, String> mapPrice = new HashMap<>();
     public HashMap<Integer, String> mapQuantity = new HashMap<>();
+    public HashMap<Integer, Double> mapLineTotal = new HashMap<>();
 
     // default constructor
     public Product() {
