@@ -29,7 +29,9 @@ public class Cash extends Payment {
 
     public double getChangeGiven(double cashReceived, double subtotal) {
         changeGiven = cashReceived - subtotal;
-        return changeGiven;// totalPayment-grandTotal
+        return changeGiven;
     }
+
+
 
 }
