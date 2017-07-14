@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,10 @@ import java.util.Scanner;
 public class Product {
 // declare variables
 
+    public HashMap<Integer, String> mapName = new HashMap<>();
+    public HashMap<String, String> mapCategory = new HashMap<String, String>();
+    public HashMap<String, String> mapDescription = new HashMap<String, String>();
+    public HashMap<String, String> mapPrice = new HashMap<String, String>();
     private String name[] = new String[12];
     private String category[] = new String[12];
     private String description[] = new String[12];
@@ -62,34 +67,61 @@ public class Product {
             FileReader reader = new FileReader(myFile);
             BufferedReader buff = new BufferedReader(reader);
 
-            while ((line = buff.readLine()) != null) {
-                menuLine = line.split(",");
 
-                for (int i = 0; i < 4; i++) {
-                    if (i == 0) {
-                        name[j] = menuLine[i];
-                    } else if (i == 1) {
-                        category[j] = menuLine[i];
-                    } else if (i == 2) {
-                        description[j] = menuLine[i];
-                    } else if (i == 3) {
-                        price[j] = menuLine[i];
+            while ((line = buff.readLine()) != null) {
+                int counter = 1;
+                char comma = ',';
+                int commaLocation = 0;
+                int startLocation = 0;
+                int commaCount = 0;
+                String temp2 = "";
+
+                for (int i = 0; i < line.length(); i++) {
+                    if (line.charAt(i) == comma && commaCount == 0) {
+                        commaLocation = i;
+                        mapName.put(counter, line.substring(startLocation, commaLocation));
+                        commaCount++;
+                        temp2 = line.substring(startLocation, commaLocation);
+                        startLocation = commaLocation + 1;
+                        System.out.println(temp2);
                     }
+
+
+                    else if (line.charAt(i) == comma && commaCount == 1) {
+                        commaLocation = i;
+                        System.out.println(commaLocation);
+                        mapCategory.put(temp2, line.substring(startLocation, commaLocation));
+
+                        commaCount++;
+                        temp2 = line.substring(startLocation, commaLocation);
+                        startLocation = commaLocation + 1;
+                        System.out.println(temp2);
+                    }
+
+                    else if (line.charAt(i) == comma && commaCount == 2) {
+                        commaLocation = i;
+                        mapDescription.put(temp2, line.substring(startLocation, commaLocation));
+                        commaCount++;
+                        startLocation = commaLocation + 1;
+                        mapPrice.put(temp2, line.substring(commaLocation));
+                        System.out.println(temp2);
+                    }
+
                 }
-                j++;
 
             }
             buff.close();
+            System.out.println("Map Size " + mapCategory.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < name.length; i++) {
-            System.out.println((i + 1) + " " + name[i] + " " + price[i]);
-            System.out.println(category[i] + " " + description[i]);
-            System.out.println();
+//        for (int i = 0; i < name.length; i++) {
+//            System.out.println((i + 1) + " " + name[i] + " " + price[i]);
+//            System.out.println(category[i] + " " + description[i]);
+//            System.out.println();
 //            System.out.println(description[i]);
 //            System.out.println(price[i]);
-        }
+//        }
         return products;
     } // end method
 

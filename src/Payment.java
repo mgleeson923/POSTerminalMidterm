@@ -19,5 +19,5 @@ public abstract class Payment {
 
         return null;
     }
-    
+
 }
