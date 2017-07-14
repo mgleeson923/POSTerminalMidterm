@@ -104,6 +104,9 @@ public class Product {
     }
 
     public void printMenu() {
+        System.out.printf("%-23s%-10s%-35s%s","Items", "", "Description", "Price");
+        System.out.println();
+        System.out.println();
         for (int i = 1; i <= mapName.size(); i++) {
             String s1 = "";
             String s2 = "";
@@ -114,7 +117,10 @@ public class Product {
             s3 = mapDescription.get(i);
             s4 = mapPrice.get(i);
 
-            System.out.println(i + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
+            //System.out.println(i + "\t" + s1 + "\t" + s2 + "\t" + s3 + "\t" + s4);
+
+            System.out.printf("%-23s%-10s%-35s%s",s1, s2,s3,s4);
+            System.out.println();
         }
     }
 

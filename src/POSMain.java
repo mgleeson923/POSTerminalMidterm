@@ -54,7 +54,9 @@ public class POSMain {
                     System.out.println("New Cart is \n" );
                     for (int Key : cart.mapName.keySet()) {
                         cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
-                        System.out.println("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key) + " " + cart.mapLineTotal.get(Key));
+                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key) + " " + "%.2f",cart.mapLineTotal.get(Key));
+                        System.out.println();
+
                     }
                     System.out.println("---------------------------");
                     break;
