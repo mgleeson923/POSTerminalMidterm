@@ -16,13 +16,14 @@ import java.util.Scanner;
 public abstract class Payment {
     Scanner scan= new Scanner(System.in);
 
-    //public  double subtotal(HashMap<Integer,String>price)//{
-        //for (HashMap :) {
+    public double subtotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity) {
+        double subTotal = 0;
 
-        //}
-
-    //}
-
+        for (String value : price.values()) {
+            subTotal += Double.parseDouble(value);
+        }
+        return subTotal;
+    }
 
 
     public double generatePayment (double i){
