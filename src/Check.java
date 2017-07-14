@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 /**
  * Midterm Project Grand Circus
- *
+ * <p>
  * Java June 2017
- *
+ * <p>
  * (Alphabetical Order)
  * Michael Gleeson
  * Matthew Menna
@@ -16,7 +16,7 @@ public class Check extends Payment {
     public String checkAccepted;
 
     @Override
-    public  String generatePayment(String d){
+    public String generatePayment(String d) {
 
         return checkAccepted;
     }
@@ -24,8 +24,12 @@ public class Check extends Payment {
 
     public String getCheckNum() {
 
-        System.out.println("Enter Check #");
+        System.out.println("Please enter checking account number:");
         checkNum = scan.nextLine();
+        while ((checkNum.length()<9)||(checkNum.length()>9)){
+            System.out.println("Invalid checking number, Please enter a valid 9 digit checking account number");
+            checkNum=scan.nextLine();
+        }
         return checkNum;
     }
 

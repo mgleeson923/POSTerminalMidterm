@@ -29,9 +29,9 @@ public class CreditCard extends Payment {
         System.out.println("Please enter your credit card number");
         creditCardNum = scan.nextLine();
 
-        while ((creditCardNum.length() >= 16) && (creditCardNum.length() <= 16)) {
+        while ((creditCardNum.length() >16) || (creditCardNum.length() < 16)) {
             System.out.println("Invalid credit card number! Please enter a  valid 16 credit card number again.");
-            //scan.nextLine();
+            creditCardNum = scan.nextLine();
         }
 
         return creditCardNum;
@@ -47,9 +47,9 @@ public class CreditCard extends Payment {
         System.out.println("Please enter your CVV");
         cVV = scan.nextLine();
 
-        while ((cVV.length() < 3) && (cVV.length() > 3)) {
+        while ((cVV.length() < 3) || (cVV.length() > 3)) {
             System.out.println("Invalid CVV! please enter a valid 3 digit CVV located on the back of your card. ");
-            //scan.nextLine();
+            cVV = scan.nextLine();
         }
         return cVV;
 
@@ -63,9 +63,9 @@ public class CreditCard extends Payment {
         System.out.println("Please enter your Exp Date");
         expDate = scan.nextLine();
 
-        while ((expDate.length() > 4) && (expDate.length() < 4)) {
+        while ((expDate.length() < 4) || (expDate.length() > 4)) {
             System.out.println("Invalid Expiration Date! Please enter the exp date in format MM/YY");
-            scan.nextLine();
+            expDate = scan.nextLine();
         }
         return expDate;
     }
