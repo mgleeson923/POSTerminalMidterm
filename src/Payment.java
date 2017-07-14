@@ -18,6 +18,17 @@ public abstract class Payment {
     Scanner scan= new Scanner(System.in);
     OOValidator validator = new OOValidator();
 
+    public double getgrandtotal(double subTotal){
+        double grandTotal = subTotal + (subTotal * 0.06);
+        return grandTotal;
+    }
+
+    public double linetotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity, int index){
+        double lineTotal = 0;
+        lineTotal += Double.parseDouble(price.get(index)) * Double.parseDouble(quantity.get(index));
+        return lineTotal;
+    }
+
     public double subtotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity) {
         double subTotal = 0;
 
