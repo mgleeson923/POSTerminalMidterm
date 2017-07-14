@@ -18,10 +18,20 @@ import java.util.Scanner;
 public class Product {
 // declare variables
 
+    public HashMap<Integer, String> getMapName() {
+
+        return mapName;
+    }
+
+    public HashMap<Integer, String> getMapPrice() {
+        return mapPrice;
+    }
+
     public HashMap<Integer, String> mapName = new HashMap<>();
     public HashMap<Integer, String> mapCategory = new HashMap<>();
     public HashMap<Integer, String> mapDescription = new HashMap<>();
     public HashMap<Integer, String> mapPrice = new HashMap<>();
+    public HashMap<Integer, String> mapQuantity = new HashMap<>();
 
     // default constructor
     public Product() {
@@ -165,5 +175,9 @@ public class Product {
         return shoppingCart;
     }// end method
 
+    @Override
+    public String toString() {
+        return "Product" + mapName + mapPrice + mapQuantity;
+    }
 } // end class
 

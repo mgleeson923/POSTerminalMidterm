@@ -17,8 +17,10 @@ public class POSMain {
     public static void main(String[] args) {
         System.out.println("Welcome to M3V! My Name is Jarvis, How can I serve you? ");
 
+        int sizeOfCart = 0;
         boolean cont = true;
         int caseNumber;
+        int quantity;
         Scanner scnr = new Scanner(System.in);
         OOValidator validator = new OOValidator();
         Product menu = new Product();
@@ -28,24 +30,30 @@ public class POSMain {
         System.out.println("POS Terminal Console");
 
         while (cont) {
-            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: Add Item to Cart\n4: Checkout\n", 1, 3);
+            caseNumber = validator.getIntWithinRange("1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 3);
             switch (caseNumber) {
                 case 1:
-                    System.out.println(menu.createMenu(0));
+                    menu.createMenu(0);
                     break;
                 case 2:
-                    cart.addToCart(scnr.nextInt());
+                    System.out.println("What Line Number?");
+                    sizeOfCart = scnr.nextInt();
+                    System.out.println("How Many?");
+                    quantity = scnr.nextInt();
+                    String menuItemtoAdd = menu.mapName.get(sizeOfCart);
+                    String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
+                    cart.mapName.put(sizeOfCart, menuItemtoAdd);
+                    cart.mapPrice.put(sizeOfCart, menuPricetoAdd);
+                    cart.mapQuantity.put(sizeOfCart, Integer.toString(quantity));
                     break;
-//                case 3:
-//                    cart.getItem();
-//                    System.out.println("New Cart is \n" + cart.getItem());
-//                    break;
+                case 3:
+                    System.out.println("New Cart is \n" + cart.toString());
+                    break;
                 case 4:
                     break;
                 default:
                     break;
             }
-            //cont = validator.getContinue("Continue? (y/n)", scnr.nextLine());
         }
     }
 }
