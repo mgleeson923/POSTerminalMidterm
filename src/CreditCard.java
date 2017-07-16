@@ -29,7 +29,7 @@ public class CreditCard extends Payment {
         System.out.print("Please enter your credit card number: ");
         creditCardNum = scan.nextLine();
 
-        while ((creditCardNum.length() >16) || (creditCardNum.length() < 16)) {
+        while ((creditCardNum.length() > 16) || (creditCardNum.length() < 16)) {
             System.out.print("Invalid credit card number! Please enter a  valid 16 credit card number: ");
             creditCardNum = scan.nextLine();
         }
@@ -62,7 +62,6 @@ public class CreditCard extends Payment {
     public String getExpDate() {
         System.out.println("Please enter your Exp Date (MMYY): ");
         expDate = scan.nextLine();
-
         while ((expDate.length() < 4) || (expDate.length() > 4)) {
             System.out.println("Invalid Expiration Date! Please enter the exp date in format MMYY");
             expDate = scan.nextLine();

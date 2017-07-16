@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 /**
  * Midterm Project Grand Circus
- *
+ * <p>
  * Java June 2017
- *
+ * <p>
  * (Alphabetical Order)
  * Michael Gleeson
  * Matthew Menna
@@ -15,15 +15,15 @@ import java.util.Scanner;
 
 public abstract class Payment {
 
-    Scanner scan= new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
     OOValidator validator = new OOValidator();
 
-    public double getgrandtotal(double subTotal){
+    public double getgrandtotal(double subTotal) {
         double grandTotal = subTotal + (subTotal * 0.06);
         return grandTotal;
     }
 
-    public double linetotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity, int index){
+    public double linetotal(HashMap<Integer, String> price, HashMap<Integer, String> quantity, int index) {
         double lineTotal = 0;
         lineTotal += Double.parseDouble(price.get(index)) * Double.parseDouble(quantity.get(index));
         return lineTotal;
@@ -39,19 +39,18 @@ public abstract class Payment {
     }
 
 
-    public double generatePayment (double i){
+    public double generatePayment(double i) {
         return 0;
     }
 
-    public String generatePayment (String creditNum, String cVV, String expDate){
+    public String generatePayment(String creditNum, String cVV, String expDate) {
         return null;
     }
 
-    public String generatePayment (String d){
+    public String generatePayment(String d) {
 
         return null;
     }
-
 
 
 }

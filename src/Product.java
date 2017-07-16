@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /**
  * Midterm Project Grand Circus
@@ -16,17 +15,8 @@ import java.util.Scanner;
  */
 
 public class Product {
-// declare variables
 
-    public HashMap<Integer, String> getMapName() {
-
-        return mapName;
-    }
-
-    public HashMap<Integer, String> getMapPrice() {
-        return mapPrice;
-    }
-
+    // declare variables
     public HashMap<Integer, String> mapName = new HashMap<>();
     public HashMap<Integer, String> mapCategory = new HashMap<>();
     public HashMap<Integer, String> mapDescription = new HashMap<>();
@@ -42,7 +32,7 @@ public class Product {
     public ArrayList<HashMap<Integer, String>> createMenu(int showOutput) {
         /*
         Creates menu of items from a text file called menu.txt.
-        Returns an ArrayList of Strings called name, category, description, price
+        Returns Hashmaps called name, category, description, price, quantity, and linetotal
          */
         String line;
 
@@ -76,6 +66,7 @@ public class Product {
         return productListFromMenu;
     } // end method
 
+    //Method that turns the text file into a viewable menu within the console
     public void populateMenu(String line, int counter, char comma, int startLocation, int commaCount) {
         int commaLocation;
         for (int i = 0; i < line.length(); i++) {
@@ -103,8 +94,9 @@ public class Product {
         }
     }
 
+    //Method that actually prints the menu to the console
     public void printMenu() {
-        System.out.printf("%-3s%-23s%-10s%-35s%s","","Items", "", "Description", "Price");
+        System.out.printf("%-3s%-23s%-10s%-35s%s", "", "Items", "", "Description", "Price");
         System.out.println();
         System.out.println();
         for (int i = 1; i <= mapName.size(); i++) {
@@ -119,7 +111,7 @@ public class Product {
             s4 = "$" + mapPrice.get(i);
             s5 = i;
 
-            System.out.printf("%-3s%-23s%-10s%-35s%s",s5,s1,s2,s3,s4);
+            System.out.printf("%-3s%-23s%-10s%-35s%s", s5, s1, s2, s3, s4);
             System.out.println();
         }
     }

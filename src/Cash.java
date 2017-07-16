@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 
 public class Cash extends Payment {
-    private double cashReceived;
+   // private double cashReceived;
     public double changeGiven;
 
     @Override

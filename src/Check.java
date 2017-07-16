@@ -26,9 +26,9 @@ public class Check extends Payment {
 
         System.out.print("Please enter your 9 digit checking account number: ");
         checkNum = scan.nextLine();
-        while ((checkNum.length()<9)||(checkNum.length()>9)){
+        while ((checkNum.length() < 9) || (checkNum.length() > 9)) {
             System.out.print("Invalid checking number, Please enter a valid 9 digit checking account number: ");
-            checkNum=scan.nextLine();
+            checkNum = scan.nextLine();
         }
         return checkNum;
     }

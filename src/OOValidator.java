@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+//Validator class
 public class OOValidator {
     public static String getString(Scanner sc, String prompt) {
         System.out.print(prompt);
