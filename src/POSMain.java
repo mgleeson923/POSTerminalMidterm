@@ -17,6 +17,7 @@ public class POSMain {
 
     public static void main(String[] args) {
         System.out.println("Welcome to M3V! My Name is Jarvis, how may I serve you? ");
+        System.out.println("POS Terminal Console");
 
         //Variables for Cart, Validation, and Payment Choices
         int sizeOfCart;
@@ -28,10 +29,6 @@ public class POSMain {
         OOValidator validator = new OOValidator();
         Product menu = new Product();
         Product cart = new Product();
-
-        System.out.println("POS Terminal Console");
-        //open receipt txt file
-
 
         //Switch Case (with Validation), prompting the user on which option they would like to select first
         while (cont) {

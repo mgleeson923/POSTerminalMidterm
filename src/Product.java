@@ -75,7 +75,6 @@ public class Product {
                 mapName.put(counter, line.substring(startLocation, commaLocation));
                 commaCount++;
                 startLocation = commaLocation + 1;
-
             } else if (line.charAt(i) == comma && commaCount == 1) {
                 commaLocation = i;
                 mapCategory.put(counter, line.substring(startLocation, commaLocation));
@@ -115,7 +114,6 @@ public class Product {
             System.out.println();
         }
     }
-
 
     @Override
     public String toString() {
