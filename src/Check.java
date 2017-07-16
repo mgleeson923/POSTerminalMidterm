@@ -24,10 +24,10 @@ public class Check extends Payment {
 
     public String getCheckNum() {
 
-        System.out.println("Please enter checking account number:");
+        System.out.print("Please enter your 9 digit checking account number: ");
         checkNum = scan.nextLine();
         while ((checkNum.length()<9)||(checkNum.length()>9)){
-            System.out.println("Invalid checking number, Please enter a valid 9 digit checking account number");
+            System.out.print("Invalid checking number, Please enter a valid 9 digit checking account number: ");
             checkNum=scan.nextLine();
         }
         return checkNum;

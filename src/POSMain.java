@@ -16,9 +16,9 @@ import java.util.Scanner;
 public class POSMain {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to M3V! My Name is Jarvis, How can I serve you? ");
+        System.out.println("Welcome to M3V! My Name is Jarvis, how may I serve you? ");
 
-        int sizeOfCart = 0;
+        int sizeOfCart;
         boolean cont = true;
         int caseNumber;
         int quantity;
@@ -27,7 +27,6 @@ public class POSMain {
         OOValidator validator = new OOValidator();
         Product menu = new Product();
         Product cart = new Product();
-        //menu.createMenu(0);
 
         System.out.println("POS Terminal Console");
         //open receipt txt file
@@ -54,9 +53,8 @@ public class POSMain {
                     System.out.println("Your Current Order is: \n" );
                     for (int Key : cart.mapName.keySet()) {
                         cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
-                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " " + cart.mapPrice.get(Key) + " " + "%.2f",cart.mapLineTotal.get(Key));
+                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " $" + cart.mapPrice.get(Key) + " $" + "%.2f",cart.mapLineTotal.get(Key));
                         System.out.println();
-
                     }
                     System.out.println("---------------------------");
                     break;
@@ -109,13 +107,13 @@ public class POSMain {
                 break;
             case 3:
                 Check check = new Check();
-                check.getCheckNum();
                 subtotal = check.subtotal(cartPayment, quantity);
                 System.out.printf("Subtotal: " +"%.2f", subtotal);
                 System.out.println();
                 grandTotal = check.getgrandtotal(subtotal);
                 System.out.printf("Grand Total: " +"%.2f", grandTotal);
                 System.out.println();
+                check.getCheckNum();
                 System.out.println("Check Accepted: Thank you for your payment");
 
                 break;
