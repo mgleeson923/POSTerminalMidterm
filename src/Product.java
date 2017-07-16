@@ -104,20 +104,22 @@ public class Product {
     }
 
     public void printMenu() {
-        System.out.printf("%-23s%-10s%-35s%s","Items", "", "Description", "Price");
+        System.out.printf("%-3s%-23s%-10s%-35s%s","","Items", "", "Description", "Price");
         System.out.println();
         System.out.println();
         for (int i = 1; i <= mapName.size(); i++) {
-            String s1 = "";
-            String s2 = "";
-            String s3 = "";
-            String s4 = "";
+            String s1;
+            String s2;
+            String s3;
+            String s4;
+            int s5;
             s1 = mapName.get(i);
             s2 = mapCategory.get(i);
             s3 = mapDescription.get(i);
-            s4 = mapPrice.get(i);
+            s4 = "$" + mapPrice.get(i);
+            s5 = i;
 
-            System.out.printf("%-23s%-10s%-35s%s",s1, s2,s3,s4);
+            System.out.printf("%-3s%-23s%-10s%-35s%s",s5,s1,s2,s3,s4);
             System.out.println();
         }
     }

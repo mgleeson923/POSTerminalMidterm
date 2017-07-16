@@ -18,6 +18,7 @@ public class POSMain {
     public static void main(String[] args) {
         System.out.println("Welcome to M3V! My Name is Jarvis, how may I serve you? ");
 
+        //Variables for Cart, Validation, and Payment Choices
         int sizeOfCart;
         boolean cont = true;
         int caseNumber;
@@ -32,15 +33,24 @@ public class POSMain {
         //open receipt txt file
 
 
+        //Switch Case (with Validation), prompting the user on which option they would like to select first
         while (cont) {
             caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
             switch (caseNumber) {
+
+                //creates menu
                 case 1:
                     menu.createMenu(0);
                     System.out.println("---------------------------");
                     break;
+
+                    //generates cart
                 case 2:
                     sizeOfCart = validator.getInt(scnr, "Please enter the number of the item you wish to add to order: ");
+                    while (sizeOfCart == 10) {
+                        //System.out.println("Sorry, our Ice Cream Machine is currently out of order. Please select another item: ");
+                        sizeOfCart = validator.getInt(scnr, "Sorry, our Ice Cream Machine is currently out of order. Please select another item: ");
+                    }
                     quantity = validator.getInt(scnr, "How many would you like?: ");
                     String menuItemtoAdd = menu.mapName.get(sizeOfCart);
                     String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
@@ -53,7 +63,10 @@ public class POSMain {
                     System.out.println("Your Current Order is: \n" );
                     for (int Key : cart.mapName.keySet()) {
                         cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
-                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key) + " $" + cart.mapPrice.get(Key) + " $" + "%.2f",cart.mapLineTotal.get(Key));
+                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key));
+                        System.out.println();
+                        System.out.printf("Price: $" + cart.mapPrice.get(Key) + " $" + "%.2f",cart.mapLineTotal.get(Key));
+                        System.out.println();
                         System.out.println();
                     }
                     System.out.println("---------------------------");
@@ -80,15 +93,15 @@ public class POSMain {
                 Cash cash = new Cash();
                 System.out.println("Amount Due:");
                 double subtotal = cash.subtotal(cartPayment, quantity);
-                System.out.printf("Subtotal: " +"%.2f", subtotal);
+                System.out.printf("Subtotal: $" +"%.2f", subtotal);
                 System.out.println();
                 double grandTotal = cash.getgrandtotal(subtotal);
-                System.out.printf("Grand Total: " +"%.2f", grandTotal);
+                System.out.printf("Grand Total: $" +"%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
                 double change = cash.getChangeGiven(cashReceived, subtotal);
-                System.out.println("Cash Tendered: " + cashReceived);
-                System.out.printf("Change: " + "%.2f", change);
+                System.out.printf("Cash Tendered: $" + "%.2f", cashReceived);
+                System.out.printf("Change: $" + "%.2f", change);
                 break;
             case 2:
                 CreditCard cc = new CreditCard();
@@ -97,10 +110,10 @@ public class POSMain {
                 cc.getcVV();
                 cc.getExpDate();
                 subtotal = cc.subtotal(cartPayment, quantity);
-                System.out.printf("Subtotal: " +"%.2f", subtotal);
+                System.out.printf("Subtotal: $" +"%.2f", subtotal);
                 System.out.println();
                 grandTotal = cc.getgrandtotal(subtotal);
-                System.out.printf("Grand Total: " + "%.2f", grandTotal);
+                System.out.printf("Grand Total: $" + "%.2f", grandTotal);
                 System.out.println();
                 System.out.println("Credit Card Accepted: Thank you for your payment");
 
@@ -108,10 +121,10 @@ public class POSMain {
             case 3:
                 Check check = new Check();
                 subtotal = check.subtotal(cartPayment, quantity);
-                System.out.printf("Subtotal: " +"%.2f", subtotal);
+                System.out.printf("Subtotal: $" +"%.2f", subtotal);
                 System.out.println();
                 grandTotal = check.getgrandtotal(subtotal);
-                System.out.printf("Grand Total: " +"%.2f", grandTotal);
+                System.out.printf("Grand Total: $" +"%.2f", grandTotal);
                 System.out.println();
                 check.getCheckNum();
                 System.out.println("Check Accepted: Thank you for your payment");
