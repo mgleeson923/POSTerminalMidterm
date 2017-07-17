@@ -11,9 +11,8 @@ import java.util.Scanner;
  * Matthew Menna
  * Mark Ritter
  * Vernon Scott
- *
+ * <p>
  * JavaDOC located at JavaDocPostTerminalMidterm/index.html in Repo
- *
  */
 
 public class POSMain {
@@ -23,7 +22,7 @@ public class POSMain {
         System.out.println("POS Terminal Console");
 
         //Variables for Cart, Validation, and Payment Choices
-        int sizeOfCart;
+        int orderNumber;
         boolean cont = true;
         int caseNumber;
         int quantity;
@@ -35,57 +34,62 @@ public class POSMain {
 
         //Switch Case (with Validation), prompting the user on which option they would like to select first
         while (cont) {
-            caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n5: Clear Cart\n", 1, 5);
+            caseNumber = validator.getInt(scnr, "1: View Menu & Add Item to Order\n2: View Current Order\n3: Checkout\n4: Clear Order\n", 1, 4);
             switch (caseNumber) {
 
                 //creates menu
                 case 1:
                     menu.createMenu(0);
                     System.out.println("---------------------------");
-                    break;
-
-                //generates cart
-                case 2:
-                    sizeOfCart = validator.getInt(scnr, "Please enter the number of the item you wish to add to order: ");
-                    while (sizeOfCart == 10) {
-                        //System.out.println("Sorry, our Ice Cream Machine is currently out of order. Please select another item: ");
-                        sizeOfCart = validator.getInt(scnr, "Sorry, our Ice Cream Machine is currently out of order. Please select another item: ");
+                    String repeat = "y";
+                    while (repeat.equalsIgnoreCase("y")) {
+                        orderNumber = validator.getInt(scnr, "Please enter the number of the item you wish to add to order: ");
+                        while (orderNumber == 10) {
+                            orderNumber = validator.getInt(scnr, "Sorry, our Ice Cream Machine is currently out of order. Please select another item: ");
+                        }
+                        quantity = validator.getInt(scnr, "How many would you like?: ");
+                        while (quantity == 0) {
+                            System.out.println("\nPlease add a quantity of 1 or more to your order!");
+                            quantity = validator.getInt(scnr, "How many would you like? ");
+                        }
+                        String menuItemtoAdd = menu.mapName.get(orderNumber);
+                        String menuPricetoAdd = menu.mapPrice.get(orderNumber);
+                        cart.mapName.put(orderNumber, menuItemtoAdd);
+                        cart.mapPrice.put(orderNumber, menuPricetoAdd);
+                        cart.mapQuantity.put(orderNumber, Integer.toString(quantity));
+                        System.out.println();
+                        repeat = validator.getString(scnr, "Would you like to order another item? Y/N: ");
                     }
-                    quantity = validator.getInt(scnr, "How many would you like?: ");
-                    String menuItemtoAdd = menu.mapName.get(sizeOfCart);
-                    String menuPricetoAdd = menu.mapPrice.get(sizeOfCart);
-                    cart.mapName.put(sizeOfCart, menuItemtoAdd);
-                    cart.mapPrice.put(sizeOfCart, menuPricetoAdd);
-                    cart.mapQuantity.put(sizeOfCart, Integer.toString(quantity));
                     System.out.println("---------------------------");
                     break;
 
                 //Cart viewer with Quantity, Item, Price, and Line Total and Grand Total
-                case 3:
+                case 2:
                     System.out.println("Your Current Order is: \n");
                     double cartTotal = 0;
                     for (int Key : cart.mapName.keySet()) {
                         cart.mapLineTotal.put(Key, Double.parseDouble(cart.mapPrice.get(Key)) * Double.parseDouble(cart.mapQuantity.get(Key)));
-                        System.out.printf("Quantity: " + cart.mapQuantity.get(Key) + " " + cart.mapName.get(Key));
+                        System.out.printf(cart.mapName.get(Key) + " - Quantity: " + cart.mapQuantity.get(Key));
                         System.out.println();
-                        System.out.printf("Price: $" + cart.mapPrice.get(Key) + " $" + "%.2f", cart.mapLineTotal.get(Key));
+                        System.out.printf("Item Price: $" + cart.mapPrice.get(Key) + "\nLine Total: $" + "%.2f", cart.mapLineTotal.get(Key));
                         cartTotal += cart.mapLineTotal.get(Key);
                         System.out.println();
                         System.out.println();
                     }
-                    System.out.println("Total: $" + cartTotal);
+                    System.out.printf("Total: $" + "%.2f", cartTotal);
+                    System.out.println();
                     System.out.println("---------------------------");
                     break;
 
                 //Selecting Payment Option, calls paymentSwitch Method
-                case 4:
+                case 3:
                     System.out.println("How would you like to pay?");
                     payOption = validator.getInt(scnr, "1: Cash\n2: Credit Card\n3: Check\n", 1, 3);
                     paymentSwitch(payOption, cart.mapPrice, cart.mapQuantity, scnr);
                     cont = false;
                     break;
-                case 5:
-                    System.out.println("Clearing cart");
+                case 4:
+                    System.out.println("Clearing Order");
                     cart.mapQuantity.clear();
                     cart.mapLineTotal.clear();
                     cart.mapPrice.clear();
@@ -121,13 +125,15 @@ public class POSMain {
                 System.out.printf("Grand Total: $" + "%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
-                if (cashReceived < grandTotal) {
-                    System.out.println("You don't have enough. There is no such thing as a free lunch!");
-                    break;
+                while (cashReceived < grandTotal) {
+                    System.out.println("This is not enough money. There's no such thing as a free lunch!");
+                    cashReceived = cash.getCashReceived(scnr);
                 }
                 double change = cash.getChangeGiven(cashReceived, grandTotal);
                 System.out.printf("Cash Tendered: $" + "%.2f" + " ", cashReceived);
+                System.out.println();
                 System.out.printf("Change: $" + "%.2f" + " ", change);
+                System.out.println();
                 System.out.println("Thank you please come again soon!");
                 break;
 

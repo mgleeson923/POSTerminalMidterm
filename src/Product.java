@@ -13,7 +13,6 @@ import java.util.HashMap;
  * Mark Ritter
  * Vernon Scott
  */
-
 public class Product {
 
     // declare variables
@@ -34,10 +33,8 @@ public class Product {
      * @return
      */
     public ArrayList<HashMap<Integer, String>> createMenu(int showOutput) {
-        /*
-        Creates menu of items from a text file called menu.txt.
-        Returns Hashmaps called name, category, description, price, quantity, and linetotal
-         */
+        //Creates menu of items from a text file called menu.txt.
+        //Returns Hashmaps called name, category, description, price, quantity, and linetotal
         String line;
 
         try {
@@ -47,9 +44,7 @@ public class Product {
 
             int counter = 1;
             while ((line = buff.readLine()) != null) {
-
                 char comma = ',';
-                int commaLocation = 0;
                 int startLocation = 0;
                 int commaCount = 0;
 
@@ -104,25 +99,17 @@ public class Product {
         }
     }// end populateMenu
 
-    /**
-     *
-     */
     public void printMenu() {
         //Method that actually prints the menu to the console
         System.out.printf("%-3s%-23s%-10s%-35s%s", "", "Items", "", "Description", "Price");
         System.out.println();
         System.out.println();
         for (int i = 1; i <= mapName.size(); i++) {
-            String s1;
-            String s2;
-            String s3;
-            String s4;
-            int s5;
-            s1 = mapName.get(i);
-            s2 = mapCategory.get(i);
-            s3 = mapDescription.get(i);
-            s4 = "$" + mapPrice.get(i);
-            s5 = i;
+            String s1 = mapName.get(i);
+            String s2 = mapCategory.get(i);
+            String s3 = mapDescription.get(i);
+            String s4 = "$" + mapPrice.get(i);
+            int s5 = i;
 
             System.out.printf("%-3s%-23s%-10s%-35s%s", s5, s1, s2, s3, s4);
             System.out.println();
@@ -131,8 +118,6 @@ public class Product {
 
     @Override
     public String toString() {
-
         return " " + mapName + " " + mapPrice + " " + mapQuantity;
     }
 } // end class
-

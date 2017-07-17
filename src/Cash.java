@@ -13,7 +13,6 @@ import java.util.Scanner;
  */
 
 public class Cash extends Payment {
-    // private double cashReceived;
     public double changeGiven;
 
     @Override
@@ -26,7 +25,6 @@ public class Cash extends Payment {
      * @return
      */
     public double getCashReceived(Scanner sc) {
-
         double cashReceived = validator.getDouble(sc, "Please enter your total amount of cash: ");
         return cashReceived;
     }

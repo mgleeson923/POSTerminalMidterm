@@ -46,12 +46,12 @@ public class CreditCard extends Payment {
 
     }
 
-    /**
-     * @param creditCardNum
-     */
-    public void setCreditCardNum(String creditCardNum) {
-        this.creditCardNum = creditCardNum;
-    }
+//    /**
+//     * @param creditCardNum
+//     */
+//    public void setCreditCardNum(String creditCardNum) {
+//        this.creditCardNum = creditCardNum;
+//    }
 
     /**
      * @return
@@ -65,14 +65,6 @@ public class CreditCard extends Payment {
             cVV = scan.nextLine();
         }
         return cVV;
-
-    }
-
-    /**
-     * @param cVV
-     */
-    public void setcVV(String cVV) {
-        this.cVV = cVV;
     }
 
     /**
@@ -86,26 +78,5 @@ public class CreditCard extends Payment {
             expDate = scan.nextLine();
         }
         return expDate;
-    }
-
-    /**
-     * @param expDate
-     */
-    public void setExpDate(String expDate) {
-        this.expDate = expDate;
-    }
-
-    /**
-     * @return
-     */
-    public String getPaymentComplete() {
-        return paymentComplete;
-    }
-
-    /**
-     * @param paymentComplete
-     */
-    public void setPaymentComplete(String paymentComplete) {
-        this.paymentComplete = paymentComplete;
     }
 }

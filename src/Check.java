@@ -22,7 +22,6 @@ public class Check extends Payment {
         return checkAccepted;
     }
 
-
     /**
      * @return
      */
@@ -36,24 +35,4 @@ public class Check extends Payment {
         }
         return checkNum;
     }
-
-    /**
-     *
-     */
-    public void setCheckNum() {
-        this.checkNum = checkNum;
-    }
-
-
-    /**
-     * @return
-     */
-    public String getCheckAccepted() {
-        return checkAccepted;
-    }
-
-    public void setCheckAccepted(String checkAccepted) {
-        this.checkAccepted = checkAccepted;
-    }
-
 }
