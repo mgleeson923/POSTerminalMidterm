@@ -35,7 +35,7 @@ public class POSMain {
 
         //Switch Case (with Validation), prompting the user on which option they would like to select first
         while (cont) {
-            caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n", 1, 4);
+            caseNumber = validator.getInt(scnr, "1: View Menu\n2: Add Item to Cart\n3: View Cart\n4: Checkout\n5: Clear Cart\n", 1, 5);
             switch (caseNumber) {
 
                 //creates menu
@@ -60,7 +60,7 @@ public class POSMain {
                     System.out.println("---------------------------");
                     break;
 
-                //Cart viewer with Quantity, Item, Price, and Line Total
+                //Cart viewer with Quantity, Item, Price, and Line Total and Grand Total
                 case 3:
                     System.out.println("Your Current Order is: \n");
                     double cartTotal = 0;
@@ -71,8 +71,9 @@ public class POSMain {
                         System.out.printf("Price: $" + cart.mapPrice.get(Key) + " $" + "%.2f", cart.mapLineTotal.get(Key));
                         cartTotal += cart.mapLineTotal.get(Key);
                         System.out.println();
-                        System.out.println("Total: $" + cartTotal);
+                        System.out.println();
                     }
+                    System.out.println("Total: $" + cartTotal);
                     System.out.println("---------------------------");
                     break;
 
@@ -83,6 +84,15 @@ public class POSMain {
                     paymentSwitch(payOption, cart.mapPrice, cart.mapQuantity, scnr);
                     cont = false;
                     break;
+                case 5:
+                    System.out.println("Clearing cart");
+                    cart.mapQuantity.clear();
+                    cart.mapLineTotal.clear();
+                    cart.mapPrice.clear();
+                    cart.mapName.clear();
+                    cart.mapCategory.clear();
+                    cart.mapDescription.clear();
+                    System.out.println("Cleared\nMake sure to view menu again please!");
                 default:
                     break;
             }
@@ -111,6 +121,10 @@ public class POSMain {
                 System.out.printf("Grand Total: $" + "%.2f", grandTotal);
                 System.out.println();
                 double cashReceived = cash.getCashReceived(scnr);
+                if (cashReceived < grandTotal) {
+                    System.out.println("You don't have enough. There is no such thing as a free lunch!");
+                    break;
+                }
                 double change = cash.getChangeGiven(cashReceived, grandTotal);
                 System.out.printf("Cash Tendered: $" + "%.2f" + " ", cashReceived);
                 System.out.printf("Change: $" + "%.2f" + " ", change);
