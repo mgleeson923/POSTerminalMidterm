@@ -25,6 +25,9 @@ public class CreditCard extends Payment {
         return paymentComplete;
     }
 
+    /**
+     * @return
+     */
     public String getCreditCardNum() {
         System.out.print("Please enter your credit card number: ");
         creditCardNum = scan.nextLine();
@@ -39,10 +42,16 @@ public class CreditCard extends Payment {
 
     }
 
+    /**
+     * @param creditCardNum
+     */
     public void setCreditCardNum(String creditCardNum) {
         this.creditCardNum = creditCardNum;
     }
 
+    /**
+     * @return
+     */
     public String getcVV() {
         System.out.print("Please enter your CVV (located on the back of the card): ");
         cVV = scan.nextLine();
@@ -55,10 +64,16 @@ public class CreditCard extends Payment {
 
     }
 
+    /**
+     * @param cVV
+     */
     public void setcVV(String cVV) {
         this.cVV = cVV;
     }
 
+    /**
+     * @return
+     */
     public String getExpDate() {
         System.out.println("Please enter your Exp Date (MMYY): ");
         expDate = scan.nextLine();
@@ -69,14 +84,23 @@ public class CreditCard extends Payment {
         return expDate;
     }
 
+    /**
+     * @param expDate
+     */
     public void setExpDate(String expDate) {
         this.expDate = expDate;
     }
 
+    /**
+     * @return
+     */
     public String getPaymentComplete() {
         return paymentComplete;
     }
 
+    /**
+     * @param paymentComplete
+     */
     public void setPaymentComplete(String paymentComplete) {
         this.paymentComplete = paymentComplete;
     }

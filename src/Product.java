@@ -29,6 +29,10 @@ public class Product {
 
     }
 
+    /**
+     * @param showOutput
+     * @return
+     */
     public ArrayList<HashMap<Integer, String>> createMenu(int showOutput) {
         /*
         Creates menu of items from a text file called menu.txt.
@@ -64,10 +68,17 @@ public class Product {
         productListFromMenu.add(mapPrice);
 
         return productListFromMenu;
-    } // end method
+    } // end createMenu
 
-    //Method that turns the text file into a viewable menu within the console
+    /**
+     * @param line
+     * @param counter
+     * @param comma
+     * @param startLocation
+     * @param commaCount
+     */
     public void populateMenu(String line, int counter, char comma, int startLocation, int commaCount) {
+        //Method that turns the text file into a viewable menu within the console
         int commaLocation;
         for (int i = 0; i < line.length(); i++) {
             if (line.charAt(i) == comma && commaCount == 0) {
@@ -91,10 +102,13 @@ public class Product {
                 commaCount++;
             }
         }
-    }
+    }// end populateMenu
 
-    //Method that actually prints the menu to the console
+    /**
+     *
+     */
     public void printMenu() {
+        //Method that actually prints the menu to the console
         System.out.printf("%-3s%-23s%-10s%-35s%s", "", "Items", "", "Description", "Price");
         System.out.println();
         System.out.println();
@@ -113,7 +127,7 @@ public class Product {
             System.out.printf("%-3s%-23s%-10s%-35s%s", s5, s1, s2, s3, s4);
             System.out.println();
         }
-    }
+    } // printMenu
 
     @Override
     public String toString() {

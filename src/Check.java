@@ -11,6 +11,7 @@ import java.util.Scanner;
  * Mark Ritter
  * Vernon Scott
  */
+
 public class Check extends Payment {
     private String checkNum;
     public String checkAccepted;
@@ -22,6 +23,9 @@ public class Check extends Payment {
     }
 
 
+    /**
+     * @return
+     */
     public String getCheckNum() {
 
         System.out.print("Please enter your 9 digit checking account number: ");
@@ -33,11 +37,17 @@ public class Check extends Payment {
         return checkNum;
     }
 
+    /**
+     *
+     */
     public void setCheckNum() {
         this.checkNum = checkNum;
     }
 
 
+    /**
+     * @return
+     */
     public String getCheckAccepted() {
         return checkAccepted;
     }

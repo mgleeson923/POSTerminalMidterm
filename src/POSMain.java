@@ -81,12 +81,18 @@ public class POSMain {
                 default:
                     break;
             }
-        }
-    }
+        } // end While
+    } // end Main
 
 
-    //Method for choosing Payment option via Switch case
+    /**
+     * @param payOption
+     * @param cartPayment
+     * @param quantity
+     * @param scnr
+     */
     public static void paymentSwitch(int payOption, HashMap<Integer, String> cartPayment, HashMap<Integer, String> quantity, Scanner scnr) {
+        //Method for choosing Payment option via Switch case
         switch (payOption) {
 
             //cash payment option
@@ -134,5 +140,5 @@ public class POSMain {
                 System.out.println("Check Accepted: Thank you for your payment");
                 break;
         }
-    }
-}
+    } // end paymentSwitch
+} // end Main class
