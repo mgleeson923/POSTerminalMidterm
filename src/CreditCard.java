@@ -26,7 +26,7 @@ public class CreditCard extends Payment {
     }
 
     /**
-     * @return
+     * @return implements https://en.wikipedia.org/wiki/Luhn_algorithm
      */
     public String getCreditCardNum() {
         System.out.print("Please enter your credit card number: ");
@@ -34,6 +34,10 @@ public class CreditCard extends Payment {
 
         while ((creditCardNum.length() > 16) || (creditCardNum.length() < 16)) {
             System.out.print("Invalid credit card number! Please enter a  valid 16 credit card number: ");
+/*            while (creditCardNum > 0) {
+                creditCardNum = creditCardNum / 10;
+            }
+*/
             creditCardNum = scan.nextLine();
         }
 
